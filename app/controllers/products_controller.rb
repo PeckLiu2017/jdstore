@@ -1,5 +1,14 @@
 class ProductsController < ApplicationController
+  before_action :validate_search_key, only: [:search]
+
   respond_to :js
+
+  def search
+    if @query_string.present?
+      search_result = Product.ransack(@search_criteria).result(:distinct => true)
+      @products = search_result.paginate(:page => params[:page], :per_page => 5 )
+    end
+  end
 
   def index
     @products = Product.all
@@ -93,5 +102,20 @@ class ProductsController < ApplicationController
     redirect_to admin_products_path
     flash[:notice] = "商品已删除"
   end
+
+  protected
+    def validate_search_key
+      @query_string = params[:q].gsub(/\\|\'|\/|\?/, "")
+      if params[:q].present?
+        @search_criteria =  {
+          title_or_category: @query_string
+        }
+      end
+    end
+
+    # def search_criteria(query_string)
+    #   { :title_category => query_string }
+    # end
+
 
 end
