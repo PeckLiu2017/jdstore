@@ -2,17 +2,122 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.panel-body {
+.cart-index {
+    position: relative;
     overflow: hidden;
-    height: 100%;
-    margin: 0;
-    text-align: center;/*不仅是h4，还有a，都可以通过这个居中*/
-    h4 {
-        padding-top: 3%;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    border-color: rgba(0,0,0,.14);
+    box-shadow: 0 3px 8px -6px rgba(0,0,0,.1);
+
+    .top {
+        span {
+            font-size: 100%;
+            font-weight: 400;
+        }
+        position: relative;
+        z-index: 1;
+        height: 60px;
+        padding: 0 10px 0 24px;
+        border-bottom: 1px solid #d4d4d4;
+        border-radius: 8px 8px 0 0;
+        box-shadow: rgba(0,0,0,.06) 0 1px 7px;
+        background: #f3f3f3;
+        background: -webkit-linear-gradient(#fbfbfb,#ececec);
+        background: linear-gradient(#fbfbfb,#ececec);
+        line-height: 60px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .middle {
+        border-bottom: 1px solid #dbdbdb;
+
+        .middle-title {
+            position: relative;
+            z-index: 1;
+            line-height: 38px;
+            height: 38px;
+            padding: 0 0 0 24px;
+            font-size: 12px;
+            background: #eee;
+            border-bottom: 1px solid #dbdbdb;
+            border-bottom-color: rgba(0,0,0,.08);
+        }
+
+        .operation,
+        .price,
+        .quantity,
+        .subtotal {
+            width: 20%;
+            float: right;
+            text-align: center;
+        }
+    }
+
+    .middle-table {
+        overflow: hidden;
+        padding: 0 0 0 24px;
+        height: 160px;
+
+        .cart-detail {
+            padding: 40px;
+
+            img {
+                border: 1px solid #d4d4d4;
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        .operation,
+        .price,
+        .quantity,
+        .subtotal {
+            width: 20%;
+            float: right;
+            text-align: center;
+            vertical-align: middle;
+
+            p {
+                height: 160px;
+                line-height: 160px;
+            }
+        }
+    }
+
+    .bottom {
+        // border-top: 1px solid #dbdbdb;
+        // overflow: hidden;
+        // margin: 4%;
+        height: 80px;
+
+        .bottom-left {}
+
+        .bottom-right {
+            .blue-large-btn {
+                display: inline-block;
+                width: 143px;
+                height: 48px;
+                line-height: 48px;
+                text-align: center;
+                border-radius: 7px;
+                border: 1px solid #5c81e3;
+                background-color: #5c85e5;
+                background-image: -webkit-linear-gradient(#779ae9, #5078df);
+                background-image: linear-gradient(#779ae9, #5078df);
+                color: #fff;
+                cursor: pointer;
+            }
+        }
     }
 }
 
 .cart-items-empty {
+  position: relative;
+    overflow: hidden;
+    margin: 4%;
     padding: 300px 0 0;
     background-image: url("/images/cart-empty.png");
     height: 100%;
@@ -20,12 +125,20 @@
     background-position: center;
     /* Center and scale the image nicely */
     background-repeat: no-repeat;
+
 }
 
-.table-panel-body{
-  margin: -15px;/*用来抵消*/
+.cart-items-empty-bottom{
+  text-align: center;
+  margin-bottom: 4%;
+  h4 {
+  }
 }
-
-.table-panel-body > .table-bordered > tbody > tr > td{
-  border-left: 0px;
-}
+// .table-panel-body {
+//     margin: -15px;
+//     /*用来抵消*/
+// }
+//
+// .table-panel-body > .table-bordered > tbody > tr > td {
+//     border-left: 0;
+// }
