@@ -8,9 +8,15 @@
 u = User.new
 u.email = "admin@test.com"           # 可以改成自己的 email
 
-u.password = "123456"                # 最少要六码
+u.password = "111111"                # 最少要六码
 
-u.password_confirmation = "123456"   # 最少要六码
+u.password_confirmation = "111111"   # 最少要六码
 
 u.is_admin = true
 u.save
+
+categories = ["匠心手机","智能家居","酷炫应用","视听享受","新潮玩具"]
+
+categories.each do |category|
+  Category.create!([:name=>category])
+end

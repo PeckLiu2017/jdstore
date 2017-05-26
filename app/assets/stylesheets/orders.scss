@@ -1,3 +1,80 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*支付宝和微信付款按钮*/
+.pay-button {
+    float: left;
+    width: 175px;
+    height: 50px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background: #FAFAFA;
+    border: 1px solid #E5E5E5;
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.alipay-button {
+    background-image: url('/images/alipay.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 34px;
+}
+
+.weixinpay-button {
+    background-image: url('/images/weixinpay.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 34px;
+}
+/*商品明细*/
+.product-order-item {
+    overflow: hidden;
+    // border: 1px solid gray;
+    // border-radius: 10px;
+    hr {
+        margin: 0;
+    }
+
+    .product-item-title {
+        height: 80px;
+        line-height: 80px;
+
+        .product-detail-partial {
+            width: 50%;
+
+            .order-product-price,
+            .order-product-quantity,
+            .order-product-subtotal {}
+        }
+    }
+
+    .product-item-detail {
+        overflow: hidden;
+        line-height: 80px;
+    }
+}
+
+.shipping-detail {
+    margin: 5% 0;
+}
+
+.confirm-detail {
+    padding: 0 30px 25px;
+    border-top: 1px solid #d5d5d5;
+
+    .info-title {
+        height: 14px;
+        padding: 30px 0;
+        line-height: 14px;
+        font-weight: bolder;
+        color: #333;
+    }
+
+    .info-detail {
+        line-height: 24px;
+        color: #666;
+    }
+}

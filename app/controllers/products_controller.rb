@@ -113,9 +113,9 @@ class ProductsController < ApplicationController
       end
     end
 
-    # def search_criteria(query_string)
-    #   { :title_category => query_string }
-    # end
+    def search_criteria(query_string)
+      { :title_category => query_string }
+    end
 
 
 end
