@@ -1,0 +1,26 @@
+<% if product.category.name != "酷炫应用"  %>
+<div class="col-xs-12 col-sm-6 col-md-3 no-padding border product-item">
+    <div class="cool-application  " data-id="<%=product.id%>">
+        <%= link_to product_path(product) do %>
+        <% if product.photos.present? %>
+        <%= image_tag(product.photos[0].avatar.url,id:"#{product.id}") %>
+    <% else %>
+        <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+        <% end %>
+        <% end %>
+        <div class="info">
+            <span style="text-align:center;"><%= product.title %></span>
+            <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"><%= product.description%></p>
+        </div>
+        <div class="product-options">
+            <a href="/products/<%= product.id %>/join" class="add-to-whishlist button btn-custom-color" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                加入收藏
+            </a>
+            <%= link_to add_to_cart_product_path(product), :method => :post, class: "addCartBtn button btn-custom-color", id:"#{product.id}",:remote => true do %>
+            加入购物车
+            <% end %>
+            <%#= button_to '加入购物车', add_to_cart_product_path(product),class: "addCartBtn ", id:"#{product.id}",:method => :post %>
+        </div>
+    </div>
+</div>
+<% end %>
