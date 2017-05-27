@@ -38,6 +38,12 @@
 			<p >合计 ￥<%= render_cart_total_price(current_cart) %></p><%= link_to("确认结账", checkout_carts_path) %>
 		</div>
 	<% else %>
-		<p class="">购物车还没有商品，赶紧添加吧</p>
+	 <div class="no-product-wrap">
+		 <!-- <div class="product-item"> -->
+			 <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fg06nnnjerj305a05a746.jpg" width="100px" height="100px">
+			 <br>
+			 <p style="color:black">购物车还没有商品，赶紧添加吧</p>
+		 <!-- </div> -->
+	</div>
 	<% end %>
 </div>

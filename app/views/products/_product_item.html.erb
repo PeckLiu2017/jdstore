@@ -1,4 +1,4 @@
-<% if product.category.name != "酷炫应用"  %>
+<% if product.tag == "精品推荐"  %>
 <div class="col-xs-12 col-sm-6 col-md-3 no-padding border product-item">
     <div class="cool-application  " data-id="<%=product.id%>">
         <%= link_to product_path(product) do %>

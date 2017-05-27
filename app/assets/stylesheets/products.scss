@@ -20,6 +20,7 @@
     img {
         border-radius: 10px;
         width: 100%;
+        height: 640px;
     }
 }
 /* Next & previous buttons */
@@ -100,6 +101,34 @@
 
     to {
         opacity: 1;
+    }
+}
+/*顾客感言*/
+.customer-img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.customer {
+    padding: 5% 10%;
+    border-bottom: 1px solid #999;
+}
+
+.customer-info {
+    margin: 0 40px;
+    text-align: left;
+
+    span {
+        font-size: 24px;
+        font-weight: 200;
+    }
+
+    p {
+        letter-spacing: 1px;
+        line-height: 40px;
+        font-weight: 400;
     }
 }
 /*精品推荐包裹单个商品的div*/
@@ -213,11 +242,10 @@
     -webkit-transition: background-color 0.3s;
     transition: background-color 0.3s;
 }
-
 /*about us*/
-.aboutUs{
-  text-align: center;
-  margin-bottom: 5%;
+.aboutUs {
+    text-align: center;
+    margin-bottom: 5%;
 }
 /*show页面*/
 .product-show {

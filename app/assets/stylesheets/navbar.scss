@@ -57,32 +57,37 @@
             display: none;
         }
 
-        .default-link .account-dropdown {}
-
-        .account-dropdown {
+        .default-link .account-link {
+          position: relative;
+          .account-dropdown{
             hr {
                 margin: 0;
             }
             position: absolute;
-            top: 40px;
+            top: 42px;
             background-color: rgb(255, 255, 255);
             min-width: 160px;
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
             border-radius: 6px;
-            right: 19%;
+            left: -56%;
             z-index: 10;
+
+          }
         }
 
-        .account-dropdown::before {
-            position: absolute;
-            left: 44%;
-            top: -8%;
-            content: "";
-            border-width: 7px;
-            border-style: solid;
-            border-color: transparent transparent #fff transparent;
+        .account-dropdown {
         }
 
+        // .account-dropdown::before {
+        //     position: absolute;
+        //     left: 44%;
+        //     top: -8%;
+        //     content: "";
+        //     border-width: 7px;
+        //     border-style: solid;
+        //     border-color: transparent transparent #fff transparent;
+        // }
+        //
         .account-dropdown .default-link {
             a {
                 color: black;
@@ -107,8 +112,7 @@
             display: none;
             /*相对于它的上一级非静态父元素开始定位*/
             position: absolute;
-            top: 90%;
-            right: 1%;
+            top: 40px;
             background-color: rgb(255, 255, 255);
             width: 250px;
             border-radius: 6px;
@@ -187,6 +191,16 @@
                 }
             }
             /*product-item-wrap*/
+
+            /*no-product-wrap*/
+            .no-product-wrap{
+                padding: 40px 40px 0px;
+              img{
+                display: block;
+                margin: 0 auto;
+              }
+            }
+
             .checkout {
                 position: relative;
 
@@ -204,15 +218,15 @@
             }
         }
 
-        .cart-wrap .dropdown-content::before {
-            content: "";
-            position: absolute;
-            top: -10%;
-            left: 45%;
-            border-width: 7px;
-            border-style: solid;
-            border-color: transparent transparent #fff transparent;
-        }
+        // .cart-wrap .dropdown-content::before {
+        //     content: "";
+        //     position: absolute;
+        //     top: -10%;
+        //     left: 45%;
+        //     border-width: 7px;
+        //     border-style: solid;
+        //     border-color: transparent transparent #fff transparent;
+        // }
         /* Show the dropdown menu on hover */
         .cart-wrap:hover .dropdown-content {
             /*笔记：如果这样写.cart-wrap .dropbtn a:hover .dropdown-content就不会生效，因为最后的a标签比dropdown-content还低一级*/

@@ -32,7 +32,8 @@
     }
 
     .middle {
-      text-align: center;
+        text-align: center;
+
         .middle-title {
             position: relative;
             z-index: 1;
@@ -60,10 +61,19 @@
         padding: 0 0 0 24px;
         height: auto;
         overflow: hidden;
+
         .cart-detail {
-            padding: 40px;
+            padding: 40px 0;
+
+            a {
+                height: 80px;
+                line-height: 80px;
+                margin-left: -20%;
+            }
 
             img {
+                display: inline-block;
+                float: left;
                 border: 1px solid #d4d4d4;
                 width: 80px;
                 height: 80px;
@@ -79,6 +89,59 @@
             text-align: center;
             vertical-align: middle;
 
+            .countNumber {
+                padding-top: 5px;
+                position: relative;
+
+                a:nth-of-type(1) {
+                    position: relative;
+                    float: left;
+                    padding: 20px;
+                    height: 160px;
+                    display: inline-block;
+                    user-select: none;
+                    background-image: url("/images/mouseover-down.png");
+                    background-size: 36px 36px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+
+                input {
+                    position: relative;
+                    overflow: hidden;
+                    float: left;
+                    display: inline-block;
+                    margin: 10px 0;
+                    width: 46px;
+                    height: 140px;
+                    background-color: transparent;
+                    border: none;
+                    border-radius: 3px;
+                    text-align: center;
+                    font-size: 14px;
+                    line-height: 18px;
+                    padding: 0;
+                }
+
+                a:nth-of-type(2) {
+                    position: relative;
+                    float: left;
+                    padding: 20px;
+                    height: 160px;
+                    display: inline-block;
+                    user-select: none;
+                    background-image: url("/images/mouseover-up.png");
+                    background-size: 36px 36px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+
+                .selecte-quantity {
+                    float: left;
+                    width: 160px;
+                }
+            }
+
             p {
                 height: 160px;
                 line-height: 160px;
@@ -90,11 +153,47 @@
         // border-top: 1px solid #dbdbdb;
         // overflow: hidden;
         // margin: 4%;
-        height: 80px;
+        height: auto;
 
-        .bottom-left {}
+        .bottom-left {
+            padding: 1%;
+
+            .gray-lager-btn {
+                margin-left: 30px;
+                display: inline-block;
+                width: 143px;
+                height: 48px;
+                line-height: 48px;
+                text-align: center;
+                background: -webkit-linear-gradient(#fff, #fafafa);
+                background: linear-gradient(#fff, #fafafa);
+                border: 1px solid #e0e0e0;
+                border-radius: 7px;
+                color: #8c8c8c;
+                cursor: pointer;
+            }
+        }
 
         .bottom-right {
+            // height: 48px;
+            // line-height: 48px;
+            padding: 1%;
+
+            .render-cart-total-price {
+                display: inline-block;
+                height: 48px;
+                line-height: 48px;
+
+                span {
+                    font-size: 25px;
+                    font-weight: 400;
+                    color: red;
+                    display: inline-block;
+                    position: relative;
+                    top: 3px;
+                }
+            }
+
             .blue-large-btn {
                 display: inline-block;
                 width: 143px;
@@ -114,7 +213,7 @@
 }
 
 .cart-items-empty {
-  position: relative;
+    position: relative;
     overflow: hidden;
     margin: 4%;
     padding: 300px 0 0;
@@ -124,25 +223,23 @@
     background-position: center;
     /* Center and scale the image nicely */
     background-repeat: no-repeat;
-
 }
 
-.cart-items-empty-bottom{
-  text-align: center;
-  margin-bottom: 4%;
-  h4 {
-  }
-}
+.cart-items-empty-bottom {
+    text-align: center;
+    margin-bottom: 4%;
 
+    h4 {}
+}
 /*order*/
-.order-title{
-  text-align: center;
-  height: 40px;
-  line-height: 40px;
+.order-title {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
 }
 
-.order-detail{
-  text-align: center;
-  height: 40px;
-  line-height: 40px;
+.order-detail {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
 }

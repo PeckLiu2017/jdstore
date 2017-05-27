@@ -19,7 +19,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.category_id = params[:category_id]
 
-    if @product.save
+    if @product.save!
        if params[:photos] != nil
          params[:photos]['avatar'].each do |a|
          @photo = @product.photos.create(:avatar => a)
@@ -69,6 +69,6 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:title,:description,:quantity,:price,:image,:category,:category_id)
+    params.require(:product).permit(:title,:description,:quantity,:price,:image,:category,:category_id,:tag)
   end
 end

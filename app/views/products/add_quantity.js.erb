@@ -1,3 +1,11 @@
 $('.countNumber-btn-plus').bind('ajax:success', function(e, data) {
-	$('.countNumber-input').val('<%= @product.purchase_quantity %>')
+	// $('.countNumber-input').val('<%= @product.purchase_quantity %>')
+	$(this).prev().val('<%= @product.purchase_quantity %>')
+	var subtotal =<%= @product.purchase_quantity %>*<%= @product.price %>;
+	if ($(this).parent().parent().parent().prev().find('p')) {
+		$(this).parent().parent().parent().prev().find('p').text(subtotal);
+	}
+	if ($('#render-cart-total-price')) {
+		$('#render-cart-total-price').text('<%= render_cart_total_price(current_cart) %>')
+	}
 });
