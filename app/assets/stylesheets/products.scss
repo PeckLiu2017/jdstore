@@ -13,6 +13,7 @@
 .slideshow-container {
     max-width: 100%;
     position: relative;
+
     .mySlides {
         // display: none;
         img {
@@ -21,10 +22,7 @@
             height: 640px;
         }
     }
-
 }
-
-
 /* The dots/bullets/indicators */
 .dots {
     position: absolute;
@@ -47,7 +45,6 @@
 .dot:hover {
     background-color: #717171;
 }
-
 /*顾客感言*/
 .customer-img {
     height: 200px;
@@ -305,28 +302,37 @@
             margin-bottom: 13px;
         }
 
-        h6 {
+        .product-description {
+            width: 85%;
             font-size: 14px;
             line-height: 1.5;
             color: #bdbdbd;
-        }
-    }
-
-    .product-price {
-        position: absolute;
-        right: 8px;
-        bottom: -4px;
-
-        span {
-            color: red;
-            font-weight: 700;
+            font-weight: 500;
+            margin-bottom: 13px;
+            display: inline-block;
         }
 
-        span:nth-of-type(1) {}
+        .product-price {
+            position: absolute;
+            right: 8px;
+            bottom: -4px;
+            width: 15%;
 
-        span:nth-of-type(2) {
-            padding-left: 2px;
-            font-size: 24px;
+            span {
+                float: right;
+                color: red;
+                font-weight: 700;
+            }
+
+            span:nth-of-type(2) {
+                padding-left: 2px;
+                font-size: 24px;
+            }
+
+            span:nth-of-type(1) {
+                padding-left: 2px;
+                font-size: 24px;
+            }
         }
     }
 

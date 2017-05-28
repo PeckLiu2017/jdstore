@@ -1,12 +1,4 @@
 $('.add-to-whishlist').bind('ajax:success', function(e, data) {
-  // $(this).text("收藏成功");
-  // var text =  $(this).text();
-  // console.log(text);
-  // if (text == "收藏") {
-  //   $(this).text("收藏成功");
-  // }else {
-  //   $(this).text("收藏");
-  // }
   <% if current_user && current_user.is_favorite_of?(@product) %>
     $(this).prev().removeClass('fa-star-o')
     $(this).prev().addClass('fa-star')

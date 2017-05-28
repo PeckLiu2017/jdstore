@@ -58,26 +58,24 @@
         }
 
         .default-link .account-link {
-          position: relative;
-          .account-dropdown{
-            hr {
-                margin: 0;
+            position: relative;
+
+            .account-dropdown {
+                hr {
+                    margin: 0;
+                }
+                position: absolute;
+                top: 42px;
+                background-color: rgb(255, 255, 255);
+                min-width: 160px;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                border-radius: 6px;
+                left: -56%;
+                z-index: 10;
             }
-            position: absolute;
-            top: 42px;
-            background-color: rgb(255, 255, 255);
-            min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-            border-radius: 6px;
-            left: -56%;
-            z-index: 10;
-
-          }
         }
 
-        .account-dropdown {
-        }
-
+        .account-dropdown {}
         // .account-dropdown::before {
         //     position: absolute;
         //     left: 44%;
@@ -130,6 +128,14 @@
                     padding: 20px;
 
                     .product-item-partial {
+                        .text-overflow {
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            width: 80px;
+                            display: block;
+                        }
+                        position: relative;
                         -webkit-flex-grow: 1;
                         /* Safari 6.1+ */
                         -webkit-flex-shrink: 1;
@@ -164,8 +170,8 @@
                             background-position: center;
                             padding: 20px; //因为上面设置了a的padding为0，这里的背景图片显示需要设置一个数值，
                             position: absolute;
-                            top: 25px;
-                            right: 0;
+                            top: 5px;
+                            right: -5px;
                         }
                     }
 
@@ -173,6 +179,7 @@
                         -webkit-flex-shrink: 3;
                         /* Safari 6.1+ */
                         flex-shrink: 3;
+
                         img {
                             border: 1px solid gray;
                             border-radius: 2px;
@@ -186,38 +193,36 @@
                         /* Safari 6.1+ */
                         flex-shrink: 5;
                     }
-
-
                 }
             }
             /*product-item-wrap*/
-
             /*no-product-wrap*/
-            .no-product-wrap{
-                padding: 40px 40px 0px;
-              img{
-                display: block;
-                margin: 0 auto;
-              }
+            .no-product-wrap {
+                padding: 40px 40px 0;
+
+                img {
+                    display: block;
+                    margin: 0 auto;
+                }
             }
 
             .checkout {
                 position: relative;
+                height: 50px;
 
                 a {
                     color: gray;
                     padding: 0;
                     position: absolute;
-                    top: -80%;
+                    top: 5%;
                     right: 10%;
                 }
 
                 p {
-                    margin: 5px 0 5px 5px;
+                    margin: 10px 10px 5px 5px;
                 }
             }
         }
-
         // .cart-wrap .dropdown-content::before {
         //     content: "";
         //     position: absolute;
@@ -234,7 +239,6 @@
         }
     }
 }
-
 /*响应式navbar，浏览器缩小自动调整样式*/
 /* Add a black background color to the top navigation */
 .topnav {

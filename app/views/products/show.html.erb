@@ -41,10 +41,10 @@
         <div class="col-xs-12 col-sm-6 col-md-6 no-padding">
             <div class="product-info">
                 <h4><%= @product.title %></h4>
-                <h6><%= @product.description %></h6>
+                <div class="product-description"><%= @product.description %></div>
                 <div class="product-price">
-                    <span>¥</span>
                     <span><%= @product.price %></span>
+                    <span>¥</span>
                 </div>
             </div>
             <div class="product-shopping-options clearfix">
