@@ -102,8 +102,16 @@ $(function () {
         carLeft = cart_wrap.offset().left
         carTop = cart_wrap.offset().top
     $('.addCartBtn').click(function () {
-        var product = $(this).parent().parent().find('.thumbnail')
-        console.log(product)
+      var product;
+      console.log(product);
+      console.log($(this));
+      if ($(this).hasClass('cart-fly')) {
+        product = $('#thumb')
+          console.log(product);
+      } else {
+        product = $(this).parent().parent().find('.cart-fly')
+        console.log(product);
+      }
         productLeft = product.offset().left
         productTop = product.offset().top
         if (product.is(':animated')) {
@@ -112,7 +120,7 @@ $(function () {
         var product_fly_image = product.clone();
 
         $('body').append(product_fly_image);
-        product_fly_image.css({position: 'absolute', left: productLeft, top: productTop, border: '5px #f00 solid'})
+        product_fly_image.css({position: 'absolute', left: productLeft, top: productTop, border: '1px black solid','border-radius':'10px',width:'80px',height:'80px'})
         product_fly_image.animate({
             width: 80,
             height: 80,

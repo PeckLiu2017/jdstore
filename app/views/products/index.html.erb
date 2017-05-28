@@ -2,19 +2,27 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-40">
         <div class="container no-padding">
             <div class="slideshow-container">
-                <div class="mySlides">
-                    <img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ffzydnasyaj31kw0vc18t.jpg" alt="">
+                <div class="mySlides ">
+                    <a href="/products/35">
+                        <img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ffzydnasyaj31kw0vc18t.jpg" alt="">
+                    </a>
                 </div>
-                <div class="mySlides">
-                    <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ffzydkuspcj31kw0uwnpd.jpg" alt="">
+
+                <div class="mySlides ">
+                    <a href="/products/36">
+                        <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ffzyseg9p7j31kw0xe4qr.jpg" alt="">
+                    </a>
                 </div>
-                <div class="mySlides">
-                    <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ffzyseg9p7j31kw0xe4qr.jpg" alt="">
+
+                <div class="mySlides ">
+                    <a href="/products/37">
+                        <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ffzydkuspcj31kw0uwnpd.jpg" alt="">
+                    </a>
                 </div>
                 <div class="dots">
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
                 </div>
             </div>
         </div>
@@ -39,53 +47,74 @@
                         <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fg022t0ldwj30fy0jmk6x.jpg" alt="Random Name" class="customer-img" height="200" width="200">
                     </div>
                     <div class="customer-info col-sm-7 ">
-                      <span>Cobie 职场女性</span>
-                      <p>对我来说，生活既要美感，也要高效。很难找到设计这么符合我美学品位的产品。当我第一眼看到它，就被它的设计吸引住了。不仅如此，它兼顾了设计和功能两个方面。
-                        用它解放双手自然不在话下。它的音质也竟然这样完美。</p>
+                        <span>Cobie 职场女性</span>
+                        <p>对我来说，生活既要美感，也要高效。很难找到设计这么符合我美学品位的产品。当我第一眼看到它，就被它的设计吸引住了。不仅如此，它兼顾了设计和功能两个方面。 用它解放双手自然不在话下。它的音质也竟然这样完美。</p>
                     </div>
                 </div>
                 <div class="col-sm-12 customer ">
                     <div class="customer-img pull-right">
                         <img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fg022l3u9hj30oi0ra4p6.jpg" alt="Random Name" class="customer-img" height="200" width="200">
                     </div>
-                    <div class="customer-info col-sm-8">
-                      <span>Sherry 运动达人</span>
-                      <p>生活就是要酷炫。我热爱一切新潮的东西！我热爱探索！这款VR眼镜不仅给我全屏幕的震撼。而且高度防眩晕，看上好几个小时都不会觉得很累。最令人惊奇的是，它还加入了游戏手柄控制功能。轻轻一划，游戏人物就飞起来。期待它的迭代！</p>
+                    <div class="customer-info col-sm-7">
+                        <span>Sherry 运动达人</span>
+                        <p>生活就是要酷炫。我热爱一切新潮的东西！我热爱探索！这款VR眼镜不仅给我全屏幕的震撼。而且高度防眩晕，看上好几个小时都不会觉得很累。最令人惊奇的是，它还加入了游戏手柄控制功能。轻轻一划，游戏人物就飞起来。期待它的迭代！</p>
+                    </div>
+                </div>
+                <div class="col-sm-12 customer  ">
+                    <div class="self-introduce pull-left  "></div>
+                    <div class="customer-info col-sm-7 ">
+                        <span>JD 自述</span>
+                        <p>因为想过的好一点，我们收集各种让人心动的产品。生活本应该丰富多彩，用些好的，才能不断提升个人品味和生活质量。 我们提供了以现代科技产品手机为中心，集合智能家居，新潮玩具，视听享受三个方面的选择。如果您有更棒的想法和品味，请与我们联系。</p>
                     </div>
                 </div>
             </div>
             <br>
-            <p>因为想过的好一点</p>
-            <p>我们收集各种让人心动的产品</p>
-            <p>生活本应该丰富多彩</p>
-            <p>用些好的，才能不断提升个人品味和生活质量</p>
-            <p>我们提供了以现代科技产品手机为中心，集合智能家居，新潮玩具，视听享受三个方面的选择</p>
-            <p>如果您有更棒的想法和品味，请与我们联系</p>
         </div>
     </div>
     <% end %>
 </div>
 
 <script>
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
     var slideIndex = 0;
     showSlides();
 
-    function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+        if (n) {
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        } else {
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
         }
-        slideIndex++;
-        if (slideIndex > slides.length) {
-            slideIndex = 1
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 3000); // Change image every 2 seconds
     }
 </script>

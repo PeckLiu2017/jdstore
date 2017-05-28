@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
-  respond_to :js
+  respond_to :js,:json
 
   def search
     if @query_string.present?
@@ -61,13 +61,18 @@ class ProductsController < ApplicationController
     type = params[:type]
     if type == "favorite"
     current_user.favorite_products << @product
-    redirect_to :back
+    respond_to do |format|
+      format.js   { render :layout => false }
+    end
     elsif type == "unfavorite"
     current_user.favorite_products.delete(@product)
-    redirect_to :back
-
+    respond_to do |format|
+      format.js   { render :layout => false }
+    end
     else
-    redirect_to :back
+      respond_to do |format|
+        format.js   { render :layout => false }
+      end
     end
   end
 

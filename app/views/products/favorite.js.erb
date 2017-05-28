@@ -1,0 +1,24 @@
+$('.add-to-whishlist').bind('ajax:success', function(e, data) {
+  // $(this).text("收藏成功");
+  // var text =  $(this).text();
+  // console.log(text);
+  // if (text == "收藏") {
+  //   $(this).text("收藏成功");
+  // }else {
+  //   $(this).text("收藏");
+  // }
+  <% if current_user && current_user.is_favorite_of?(@product) %>
+    $(this).prev().removeClass('fa-star-o')
+    $(this).prev().addClass('fa-star')
+    $(this).text("收藏成功")
+    $(this).attr('href','/products/<%=@product.id%>/favorite?type=unfavorite')
+  <% else %>
+    $(this).prev().removeClass('fa-star')
+    $(this).prev().addClass('fa-star-o')
+    $(this).text("收藏")
+    $(this).attr('href','/products/<%=@product.id%>/favorite?type=favorite')
+  <% end %>
+  if ($('#favorite-count')) {
+    $('#favorite-count').text('<%= @product.favorite_lists.count %>')
+  }
+});

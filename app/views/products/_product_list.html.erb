@@ -1,3 +1,9 @@
-  <% @products.each_with_index do |product, index| %>
-    <%= render :partial => "product_item", locals: { product: product, index: index } %>
+<% @products.each_with_index do |product, index| %>
+  <% if params[:category].blank?  %>
+    <% if product.tag == "精品推荐"  %>
+      <%= render :partial => "product_item", locals: { product: product, index: index } %>
+    <% end %>
+  <% else %>
+      <%= render :partial => "product_item", locals: { product: product, index: index } %>
   <% end %>
+<% end %>

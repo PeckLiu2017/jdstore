@@ -19,20 +19,20 @@
                 <div class="image-medium">
                     <% if @photos.present? %>
                     <a class="product-modal" href="javascript:;">
-                        <img id="thumb" src="<%= @photos.first.avatar.url %>" class="preview-photo">
+                        <img id="thumb" src="<%= @photos.first.avatar.url %>" class="preview-photo cart-fly">
                     </a>
                     <% end %>
                 </div>
                 <p>
                     <% if current_user && current_user.is_favorite_of?(@product) %>
                     <i class="fa fa-star"></i>
-                    <%= link_to('收藏'.html_safe, favorite_product_path(@product, type: "unfavorite"), method: :put) %>
+                    <%= link_to('收藏成功'.html_safe, favorite_product_path(@product, type: "unfavorite"), method: :put,class:"add-to-whishlist",:remote => true) %>
                 <% else %>
                     <i class="fa fa-star-o"></i>
 
-                    <%= link_to('收藏'.html_safe, favorite_product_path(@product, type: "favorite"), method: :put) %>
+                    <%= link_to('收藏'.html_safe, favorite_product_path(@product, type: "favorite"), method: :put,class:"add-to-whishlist",:remote => true) %>
                     <% end %>
-                    <span>（<%= @product.favorite_lists.count %>人气）</span>
+                    <span>（<span id="favorite-count"><%= @product.favorite_lists.count %></span>人气）</span>
                 </p>
             </div>
         </div>
@@ -63,7 +63,7 @@
             </div>
             <div class="">
               <p style="padding-left:10px;font-weight:bold;color:red;">此产品加入阿拉善沙漠改造公益计划</p>
-              
+
             </div>
         </div>
     </div>
