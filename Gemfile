@@ -39,9 +39,9 @@ gem 'ratyrate'
 gem 'aasm'
 gem 'letter_opener', group: :development
 
-gem 'carrierwave-qiniu'
-gem 'qiniu-rs'
-gem 'figaro'
+# gem 'carrierwave-qiniu'
+# gem 'qiniu-rs'
+# gem 'figaro'
 
 gem 'ransack'
 gem 'will_paginate'
