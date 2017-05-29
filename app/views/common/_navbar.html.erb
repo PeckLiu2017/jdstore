@@ -6,7 +6,7 @@
                     <a href="/">JD</a>
                 </div>
                 <% Category.all.each do |category| %>
-                <% if category.name != "其它" && category.name != "匠心手机" && category.name != "酷炫应用"%>
+                <% if category.name == "智能家居" || category.name == "视听震撼" || category.name == "新潮玩具"%>
                 <div class="default-link">
                     <%= link_to category.name, products_path(category: category.name) %>
                 </div>
