@@ -90,8 +90,8 @@ p14 = Product.create([title:products[13][:title],description:products[13][:descr
 p15 = Product.create([title:products[14][:title],description:products[14][:description],quantity:products[14][:quantity],price:products[14][:price],category_id:products[14][:category_id],tag:products[14][:tag]])
 p16 = Product.create([title:products[15][:title],description:products[15][:description],quantity:products[15][:quantity],price:products[15][:price],category_id:products[15][:category_id],tag:products[15][:tag]])
 
-Photo.create!(product_id:1,avatar: open(File.join('https://ws3.sinaimg.cn/large/006tKfTcgy1fg1god6zz7j307306ldfw.jpg')))
-Photo.create!(product_id:2,avatar: open(File.join('https://ws3.sinaimg.cn/large/006tKfTcgy1fg1god6zz7j307306ldfw.jpg')))
+Photo.create!(product_id:1,avatar: open('https://ws3.sinaimg.cn/large/006tKfTcgy1fg1god6zz7j307306ldfw.jpg'))
+Photo.create!(product_id:2,avatar: open('https://ws3.sinaimg.cn/large/006tKfTcgy1fg1god6zz7j307306ldfw.jpg'))
 Photo.create!(product_id:3,avatar: open('https://ws3.sinaimg.cn/large/006tKfTcgy1fg1god6zz7j307306ldfw.jpg'))
 Photo.create!(product_id:4,avatar: open(File.join('public/images/Yeelight LED-1.png')))
 Photo.create!(product_id:5,avatar: open(File.join('public/images/Water-Purifier-1.jpg')))
