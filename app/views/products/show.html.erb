@@ -59,7 +59,8 @@
             </div>
             <div class="show-cart-btn">
                 <%= render :partial => "products/cart_btn"%>
-                <%= link_to("确认结账", checkout_carts_path, method: :post, class: "gray-lager-btn ") %>
+                <%#= link_to("确认结账", checkout_carts_path, method: :post, class: "gray-lager-btn ") %>
+                <a class="gray-lager-btn " rel="nofollow" data-method="post" href="/carts/checkout?productid=<%= @product.id%>">确认结账</a>
             </div>
             <div class="">
               <p style="padding-left:10px;font-weight:bold;color:red;">此产品加入阿拉善沙漠改造公益计划</p>

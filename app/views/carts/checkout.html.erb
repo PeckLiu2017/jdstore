@@ -18,9 +18,9 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="price">
+                    <!-- <div class="price">
                         操作
-                    </div>
+                    </div> -->
                     <div class="quantity">
                         小计
                     </div>
@@ -46,13 +46,13 @@
                     <%= link_to(cart_item.product.title, product_path(cart_item.product) ,class:"") %>
                 </div>
                 <div class="col-md-8">
-                    <div class="operation ">
+                    <!-- <div class="operation ">
                         <p>
-                            <%= link_to cart_item_path(cart_item.product_id), method: :delete do %>
+                            <%#= link_to cart_item_path(cart_item.product_id), method: :delete do %>
                             <i class="fa fa-trash"></i>
-                            <% end %>
+                            <% #end %>
                         </p>
-                    </div>
+                    </div> -->
                     <div class="subtotal">
                         <p>
                               <%= cart_item.product.price %>
@@ -60,11 +60,11 @@
                     </div>
                     <div class="quantity ">
                             <div class="countNumber clearfix">
-                                <div class="selecte-quantity">
-                                    <a class="countNumber-btn countNumber-btn-sub" data-remote="true" rel="nofollow" data-method="post" href="/products/41/reduce_quantity"></a>
-                                    <input class="countNumber-input" type="text" value="1" readonly="">
-                                    <a class="countNumber-btn countNumber-btn-plus" data-remote="true" rel="nofollow" data-method="post" href="/products/41/add_quantity"></a>
-                                </div>
+                              <div class="selecte-quantity">
+                                  <%= link_to(" ", reduce_quantity_product_path(cart_item.product), class: "countNumber-btn countNumber-btn-sub", method: :post,remote: true) %>
+                                  <input class="countNumber-input" type="text" value="<%= cart_item.product.purchase_quantity %>" readonly>
+                                  <%= link_to(" ", add_quantity_product_path(cart_item.product), class: "countNumber-btn countNumber-btn-plus", method: :post,remote: true) %>
+                              </div>
                             </div>
                     </div>
                     <div class="price ">
