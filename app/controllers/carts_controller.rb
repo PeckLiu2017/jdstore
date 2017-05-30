@@ -8,11 +8,13 @@ class CartsController < ApplicationController
   def checkout
     @order = Order.new
     id = params[:productid]
-    @product = Product.find(id)
-    if !current_cart.products.include?(@product)
-      current_cart.add_product_to_cart(@product)
-      @product.quantity -= @product.purchase_quantity
-      @product.save
+    if !id.blank?
+      @product = Product.find(id)
+      if !current_cart.products.include?(@product)
+        current_cart.add_product_to_cart(@product)
+        @product.quantity -= @product.purchase_quantity
+        @product.save
+      end
     end
   end
 end
