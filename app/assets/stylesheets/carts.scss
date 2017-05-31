@@ -28,7 +28,6 @@
         background: linear-gradient(#fbfbfb,#ececec);
         line-height: 60px;
         font-size: 18px;
-        color: #333;
     }
 
     .middle {
@@ -230,6 +229,94 @@
     margin-bottom: 4%;
 
     h4 {}
+}
+/*receiver*/
+.box {
+    overflow: hidden;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    border-color: rgba(0,0,0,.14);
+    box-shadow: 0 3px 8px -6px rgba(0,0,0,.1);
+
+    .box-top {
+        position: relative;
+        height: 60px;
+        background: linear-gradient(#FFF,#F5F5F5);
+
+        span {
+            line-height: 60px;
+            font-size: 18px;
+            font-weight: 400;
+            margin-left: 20px;
+        }
+        border-bottom: 1px solid #d4d4d4;
+        box-shadow: rgba(0,0,0,.06) 0 1px 7px;
+        line-height: 60px;
+        font-size: 18px;
+    }
+
+    .box-middle {
+        padding: 1%;
+        overflow: hidden;
+
+        .name-section {
+            height: 16px;
+            padding-right: 20px;
+            line-height: 16px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .add-section {
+            position: relative;
+            overflow: hidden;
+            width: 276px;
+            height: 158px;
+            border: 1px solid #E5E5E5;
+            border-radius: 3px;
+            background: #FAFAFA;
+            line-height: 14px;
+            text-align: left;
+            word-wrap: break-word;
+            word-break: normal;
+            color: #626262;
+            cursor: pointer;
+            -moz-user-select: -moz-none;
+            -webkit-user-select: none;
+            user-select: none;
+
+            p {
+                height: 14px;
+                padding-top: 85px;
+                line-height: 14px;
+                text-align: center;
+                color: #999;
+            }
+        }
+
+        .add-section::before {
+            content: '十';
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 54px;
+            height: 24px;
+            margin-left: -10px;
+            line-height: 24px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 400;
+            color: #626262;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 450px !important;
+    margin: 20% auto !important;
+  }
 }
 /*order*/
 .order-title {

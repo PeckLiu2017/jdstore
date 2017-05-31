@@ -89,6 +89,33 @@
         </div>
         <% end %>
     </div>
+
+    <div class="container box no-padding margin-top-40">
+      <div class="box-top">
+          <span>收货信息</span>
+      </div>
+      <div class="box-middle">
+        <div class="col-md-3">
+          <div class="name-section">
+111
+          </div>
+          <div class="mobile-section">
+111
+          </div>
+          <div class="detail-section">
+111
+          </div>
+          <div class="operation-section">
+            <span class="update-btn js-edit-address">修改</span>
+            <span class="delete-btn js-delete-address" data-id="723726">删除</span>
+          </div>
+        </div>
+        <div class="add-section col-md-3" data-toggle="modal" data-target="#myModal">
+          <p>使用新地址</p>
+        </div>
+      </div>
+    </div>
+
     <div class="container cart-index no-padding margin-top-40">
         <div class="top">
             <span>收货信息</span>
@@ -131,11 +158,49 @@
         </div>
     </div>
 </div>
+<div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+
+        <div class="modal-body">
+          <%= simple_form_for @user_info do |f| %>
+            <%= f.input :name,label:false  %>
+            <%= f.input :tel,label:false  %>
+            <%= f.input :province,label:false  %>
+            <%= f.input :city,label:false  %>
+            <%= f.input :county,label:false  %>
+            <%= f.input :address,label:false  %>
+          <% end %>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
 <br><br>
 <script type="text/javascript">
 $(function () {
   $('.blue-large-btn').click(function () {
     $('form').submit();
+  })
+  $('.add-section').click(function () {
+
   })
 })
 </script>
