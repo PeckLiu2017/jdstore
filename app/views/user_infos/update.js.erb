@@ -1,2 +1,2 @@
-<% html = j( render :partial => "user_infos/address_warp",:locals => { :user_info => @user_info } ) %>
-$("#address-<%=@user_info.id%>").html("<%= html %>")
+<% html = j( render :partial => "user_infos/address_item",:locals => { :user_info => @user_info } ) %>
+$("#address-item-<%=@user_info.id%>").html("<%= html %>")

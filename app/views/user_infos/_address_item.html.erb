@@ -1,10 +1,9 @@
-<div class="col-md-3 address-wrap no-padding" id="address-<%=user_info.id%>">
-    <div class="address-item">
+    <div class="address-item" id="address-item-<%=user_info.id%>">
         <div class="name-section">
-            刘潇阳（默认地址）
+            <%=user_info.name %>
         </div>
         <div class="mobile-section">
-            18133621852
+            <%=user_info.tel %>
         </div>
         <div class="detail-section">
             <%=user_info.province %>
@@ -14,8 +13,3 @@
             <%=user_info.county %>
         </div>
     </div>
-    <div class="operation-section">
-        <span class="update-btn js-edit-address">修改</span>
-        <%= link_to "删除", user_info_path(user_info), :method => :delete, :class => "delete-btn", :remote => true %>
-    </div>
-</div>
