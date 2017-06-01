@@ -55,17 +55,17 @@
                     </div> -->
                     <div class="subtotal">
                         <p>
-                              <%= cart_item.product.price %>
+                            <%= cart_item.product.price %>
                         </p>
                     </div>
                     <div class="quantity ">
-                            <div class="countNumber clearfix">
-                              <div class="selecte-quantity">
-                                  <%= link_to(" ", reduce_quantity_product_path(cart_item.product), class: "countNumber-btn countNumber-btn-sub", method: :post,remote: true) %>
-                                  <input class="countNumber-input" type="text" value="<%= cart_item.product.purchase_quantity %>" readonly>
-                                  <%= link_to(" ", add_quantity_product_path(cart_item.product), class: "countNumber-btn countNumber-btn-plus", method: :post,remote: true) %>
-                              </div>
+                        <div class="countNumber clearfix">
+                            <div class="selecte-quantity">
+                                <%= link_to(" ", reduce_quantity_product_path(cart_item.product), class: "countNumber-btn countNumber-btn-sub", method: :post,remote: true) %>
+                                <input class="countNumber-input" type="text" value="<%= cart_item.product.purchase_quantity %>" readonly>
+                                <%= link_to(" ", add_quantity_product_path(cart_item.product), class: "countNumber-btn countNumber-btn-plus", method: :post,remote: true) %>
                             </div>
+                        </div>
                     </div>
                     <div class="price ">
                         <p>
@@ -77,43 +77,34 @@
             </div>
         </div>
         <div class="bottom">
-          <div class="bottom-right col-md-6 pull-right">
-            <div class="col-sm-6 pull-right">
-              <a href="javascript:void(0)" class="blue-large-btn pull-right">确认结账</a>
-              <%#= link_to("确认结账", checkout_carts_path, method: :post, class: "blue-large-btn pull-right") %>
+            <div class="bottom-right col-md-6 pull-right">
+                <div class="col-sm-6 pull-right">
+                    <a href="javascript:void(0)" class="blue-large-btn pull-right">确认结账</a>
+                    <%#= link_to("确认结账", checkout_carts_path, method: :post, class: "blue-large-btn pull-right") %>
+                </div>
+                <div class="render-cart-total-price pull-right">
+                    应付金额:<span id="render-cart-total-price">¥<%= render_cart_total_price(current_cart) %></span>
+                </div>
             </div>
-            <div class="render-cart-total-price pull-right">
-              应付金额:<span id="render-cart-total-price">¥<%= render_cart_total_price(current_cart) %></span>
-            </div>
-          </div>
         </div>
         <% end %>
     </div>
 
     <div class="container box no-padding margin-top-40">
-      <div class="box-top">
-          <span>收货信息</span>
-      </div>
-      <div class="box-middle">
-        <div class="col-md-3">
-          <div class="name-section">
-111
-          </div>
-          <div class="mobile-section">
-111
-          </div>
-          <div class="detail-section">
-111
-          </div>
-          <div class="operation-section">
-            <span class="update-btn js-edit-address">修改</span>
-            <span class="delete-btn js-delete-address" data-id="723726">删除</span>
-          </div>
+        <div class="box-top">
+            <span>收货信息</span>
         </div>
-        <div class="add-section col-md-3" data-toggle="modal" data-target="#myModal">
-          <p>使用新地址</p>
+        <div class="box-middle">
+            <!-- 这里好像就是要用双引号 -->
+            <% if !@user_infos.blank?%>
+            <% @user_infos.each do |user_info|%>
+            <%= render :partial => "user_infos/address_warp" ,:locals=>{:user_info=> user_info}%>
+            <% end %>
+            <% end %>
+            <div class="add-section address-wrap col-md-3" data-toggle="modal" data-target="#myModal">
+                <p>使用新地址</p>
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="container cart-index no-padding margin-top-40">
@@ -137,70 +128,153 @@
                 订购人
             </div>
             <div class="col-md-4 no-padding">
-                <%= f.input :billing_name,label:false  %>
+                <%= f.input :billing_name,label:false,input_html: { value: "Peck" }  %>
             </div>
             <div class="col-md-4 no-padding">
-                <%= f.input :billing_address,label:false  %>
+                <%= f.input :billing_address,label:false,input_html: { value: "Peck's zone" }  %>
             </div>
 
             <div class="col-md-4 no-padding">
                 收货人
             </div>
             <div class="col-md-4 no-padding">
-                <%= f.input :shipping_name,label:false  %>
+                <%= f.input :shipping_name,label:false,input_html: { value: "Peck" }  %>
             </div>
             <div class="col-md-4 no-padding">
-                <%= f.input :shipping_address,label:false  %>
+                <%= f.input :shipping_address,label:false,input_html: { value: "Peck's zone" }  %>
             </div>
-                <%#= f.submit "生成订单", class: "btn btn-lg btn-danger pull-right",
+            <%#= f.submit "生成订单", class: "btn btn-lg btn-danger pull-right",
                      data: { disable_with: "Submitting..." } %>
             <% end %>
         </div>
     </div>
-</div>
-<div class="container">
+    <div class="container">
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
+                <!-- Modal content-->
+                <div class="modal-content">
 
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <%= simple_form_for @user_info,:remote => true do |f| %>
+                        <%= f.input :name,label:false,input_html: { value: "刘潇阳" }  %>
+                        <%= f.input :tel,label:false,input_html: { value: "1813" }  %>
+                        <%= f.input :province,label:false,collection: [],prompt:"请选择省份" %>
+                        <%= f.input :city,label:false,collection: [],prompt:"请选择城市" %>
+                        <%= f.input :county,label:false,collection: [],prompt:"请选择县区" %>
+                        <%= f.input :address,label:false %>
+                        <div class="form-actions">
+                            <%= f.button :submit,:class=>"user_info_submit" %>
+                        </div>
+                        <% end %>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="close-modal"data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="modal-body">
-          <%= simple_form_for @user_info do |f| %>
-            <%= f.input :name,label:false  %>
-            <%= f.input :tel,label:false  %>
-            <%= f.input :province,label:false  %>
-            <%= f.input :city,label:false  %>
-            <%= f.input :county,label:false  %>
-            <%= f.input :address,label:false  %>
-          <% end %>
-        </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+<a href="#" class="trigger-edit" data-toggle="modal" data-target="#myModal-edit"></a>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal-edit" role="dialog">
+            <div class="modal-dialog">
 
-      </div>
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+
+                    <div class="modal-body-edit">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="edit-close-modal"data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
+    <br><br>
+    <script type="text/javascript">
+        $(function () {
 
-  </div>
-</div>
-<br><br>
-<script type="text/javascript">
-$(function () {
-  $('.blue-large-btn').click(function () {
-    $('form').submit();
-  })
-  $('.add-section').click(function () {
+            //---------省市县下拉菜单----------// 默认初始值
+            window.onload = function () {
+                var province = world['中国'];
+                appSelect(province, select[0]);
 
-  })
-})
-</script>
+                var city = china['北京'];
+                appSelect(city, select[1]);
+
+                var county = cityChina['东城'];
+                appSelect(county, select[2]);
+            } //已经把所有数据录入，但没有实现联动。
+
+            //得到所有选项
+            var select = $('select')
+
+            function appSelect(area, select) {
+                var documentFragment = $(document.createDocumentFragment());
+                $.each(area, function (key, val) { //只有一个参数就会只有数组下标
+                    var option = $('<option></option>')
+                    option.val(val)
+                    option.html(val)
+                    documentFragment.append(option)
+                })
+                select.append(documentFragment[0])
+            }
+
+            select.change(function () {
+                if (this == select[0]) {
+                    $('#user_info_city').empty()
+                    $('#user_info_county').empty()
+                    var city = china[this.value];
+                    appSelect(city, select[1])
+                    var county = cityChina[select[1].value];
+                    appSelect(county, select[2])
+                    if (this.value == '北京' || this.value == '上海') {
+                        select[2].style.display = "none";
+                        return;
+                    }
+                    select[2].style.display = "";
+                }
+                if (this == select[1]) {
+                    $('#user_info_county').empty()
+                    var county = cityChina[this.value];
+                    console.log(county);
+                    appSelect(county, select[2])
+                }
+            })
+            //---------省市县下拉菜单----------//
+
+
+
+
+
+            //点击确认结账，提交订单
+            $('.blue-large-btn').click(function () {
+                $('form').submit();
+            })
+            $('.add-section').click(function () {})
+        })
+    </script>

@@ -1,0 +1,15 @@
+// var address = $(".modal-body-edit");
+// console.log('111');
+// var edit = $('.trigger-edit')
+// console.log($('.trigger-edit'));
+// console.log(address);
+// console.log(address.children('#user_info_province'));
+// address.children('#user_info_province').val('<%= @user_info.province%>')
+// $('.trigger-edit').click()
+var address = $("#address-<%=@user_info.id%>");//要更改的是这块
+
+$('.trigger-edit').click()//获得编辑区域，编辑完要ajax提交
+
+<% html = j( render :partial => "form", :locals => { :user_info => @user_info } ) %>
+
+$('.modal-body-edit').html("<%= html %>")

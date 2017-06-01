@@ -7,6 +7,7 @@ class CartsController < ApplicationController
 
   def checkout
     @order = Order.new
+    @user_infos = UserInfo.all
     @user_info = UserInfo.new
     id = params[:productid]
     if !id.blank?

@@ -19,46 +19,61 @@ class UserInfosController < ApplicationController
 
   # GET /user_infos/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   # POST /user_infos
   # POST /user_infos.json
   def create
     @user_info = UserInfo.new(user_info_params)
+    @user_info.user = current_user
 
-    respond_to do |format|
-      if @user_info.save
-        format.html { redirect_to @user_info, notice: 'User info was successfully created.' }
-        format.json { render :show, status: :created, location: @user_info }
-      else
-        format.html { render :new }
-        format.json { render json: @user_info.errors, status: :unprocessable_entity }
-      end
-    end
+    # @order = Order.new
+    # @order.user = current_user
+    # @order.total = current_cart.total_price
+    # @order.save
+    #
+    # if @user_info.save
+    #     current_cart.cart_items.each do |cart_item|
+    #     product_list = ProductList.new
+    #     product_list.order = @order
+    #     product_list.product_name = cart_item.product.title
+    #     product_list.product_price = cart_item.product.price
+    #     product_list.quantity = cart_item.product.purchase_quantity
+    #     product_list.save
+    #   end
+    @user_info.save
+    # respond_to do |format|
+    #   format.js{ render :show, status: :ok, location: @user_info }
+    # end
+
   end
 
   # PATCH/PUT /user_infos/1
   # PATCH/PUT /user_infos/1.json
   def update
-    respond_to do |format|
+
       if @user_info.update(user_info_params)
-        format.html { redirect_to @user_info, notice: 'User info was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_info }
+        respond_to do |format|
+          format.html {
+            redirect_to user_info_path(@user_info)
+          }
+          format.js # update.js.erb
+        end
+
       else
-        format.html { render :edit }
-        format.json { render json: @user_info.errors, status: :unprocessable_entity }
+        render :action => "edit"
       end
-    end
+
   end
 
   # DELETE /user_infos/1
   # DELETE /user_infos/1.json
   def destroy
     @user_info.destroy
-    respond_to do |format|
-      format.html { redirect_to user_infos_url, notice: 'User info was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

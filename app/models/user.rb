@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :user_infos
+  accepts_nested_attributes_for :user_infos
   has_many :favorite_lists
   has_many :favorite_products, :through => :favorite_lists, :source => :product
   def is_favorite_of?(product)

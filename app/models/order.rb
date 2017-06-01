@@ -1,5 +1,8 @@
 class Order < ApplicationRecord
    before_create :generate_token
+   has_one :user_info
+  #  accepts_nested_attributes_for :user_info
+
 
    def generate_token
      self.token = SecureRandom.uuid

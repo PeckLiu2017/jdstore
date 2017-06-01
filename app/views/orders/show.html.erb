@@ -70,7 +70,7 @@
         <br>
         <div class="confirm-detail">
             <div class="info-title">订单编号</div>
-            <p class="info-detail"><%= @order.token%></p>
+            <p class="info-detail"><%= @order.created_at.to_s(:number)[2,12]%><%= @order.token[0,4]%></p>
         </div>
         <div class="confirm-detail">
             <div class="info-title">收货信息</div>
