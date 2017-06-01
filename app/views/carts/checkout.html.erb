@@ -177,7 +177,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" id="close-modal"data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" id="close-modal" data-dismiss="modal">Close</button>
                     </div>
 
                 </div>
@@ -186,8 +186,7 @@
 
         </div>
 
-
-<a href="#" class="trigger-edit" data-toggle="modal" data-target="#myModal-edit"></a>
+        <a href="#" class="trigger-edit" data-toggle="modal" data-target="#myModal-edit"></a>
         <!-- Modal -->
         <div class="modal fade" id="myModal-edit" role="dialog">
             <div class="modal-dialog">
@@ -200,11 +199,10 @@
                         <h4 class="modal-title">Modal Header</h4>
                     </div>
 
-                    <div class="modal-body-edit">
-                    </div>
+                    <div class="modal-body-edit"></div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" id="edit-close-modal"data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" id="edit-close-modal" data-dismiss="modal">Close</button>
                     </div>
 
                 </div>
@@ -217,7 +215,10 @@
     <br><br>
     <script type="text/javascript">
         $(function () {
-
+            $('.address-wrap').click(function () {
+                $(this).css('border-color', '#6A8FE5')
+                $(this).siblings().css('border-color', '#E5E5E5')
+            })
             //---------省市县下拉菜单----------// 默认初始值
             window.onload = function () {
                 var province = world['中国'];
@@ -265,16 +266,9 @@
                     appSelect(county, select[2])
                 }
             })
-            //---------省市县下拉菜单----------//
-
-
-
-
-
-            //点击确认结账，提交订单
+            //---------省市县下拉菜单----------// 点击确认结账，提交订单
             $('.blue-large-btn').click(function () {
                 $('form').submit();
             })
-            $('.add-section').click(function () {})
         })
     </script>
