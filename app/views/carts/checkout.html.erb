@@ -163,6 +163,17 @@
                     </div>
 
                     <div class="modal-body">
+                        <%= simple_form_for @user_info,:remote => true do |f| %>
+                        <%= f.input :name,label:false,input_html: { value: "刘潇阳" }  %>
+                        <%= f.input :tel,label:false,input_html: { value: "1813" }  %>
+                        <%= f.input :province,label:false,collection: [],prompt:"请选择省份" %>
+                        <%= f.input :city,label:false,collection: [],prompt:"请选择城市" %>
+                        <%= f.input :county,label:false,collection: [],prompt:"请选择县区" %>
+                        <%= f.input :address,label:false %>
+                        <div class="form-actions">
+                            <%= f.button :submit,:class=>"user_info_submit" %>
+                        </div>
+                        <% end %>
                     </div>
 
                     <div class="modal-footer">
