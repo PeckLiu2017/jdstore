@@ -260,6 +260,11 @@
         padding: 2%;
         overflow: hidden;
 
+        .selected-address{
+          background: #FFF !important;
+          border-color: #6A8FE5 !important;
+        }
+
         .address-wrap:hover {
             background: #FFF;
             border-color: #6A8FE5;
@@ -277,8 +282,9 @@
             background: #FFF;
             position: relative;
             overflow: hidden;
+            margin: 10px 10px;
             float: left;
-            width: 276px;
+            width: 250px;
             height: 158px;
             border: 1px solid #E5E5E5;
             border-radius: 3px;

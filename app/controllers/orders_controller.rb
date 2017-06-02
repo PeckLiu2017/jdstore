@@ -8,6 +8,9 @@ class OrdersController < ApplicationController
      @order = Order.new(order_params)
      @order.user = current_user
      @order.total = current_cart.total_price
+     user_info_id = params[:user_info_id]
+     @user_info = UserInfo.find(user_info_id)
+     @order.user_info = @user_info
 
      if @order.save
          current_cart.cart_items.each do |cart_item|

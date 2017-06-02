@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div class="container cart-index no-padding margin-top-40">
+    <div class="container cart-index no-padding margin-top-40" >
         <div class="top">
             <span>收货信息</span>
         </div>
@@ -165,39 +165,39 @@
                     </div>
 
                     <div class="modal-body">
-                      <div class="user-info-form">
-                          <form novalidate="novalidate" class="simple_form new_user_info" id="new_user_info" action="/user_infos" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
-                              <div class="form-group string optional user_info_name"><input class="form-control string optional" placeholder="收货人姓名" type="text" name="user_info[name]" id="user_info_name"></div>
-                              <div class="form-group integer optional user_info_tel"><input class="form-control numeric integer optional" placeholder="手机号" type="number" step="1" name="user_info[tel]" id="user_info_tel"></div>
-                              <div class="form-group select optional user_info_province">
-                                  <select class="form-control select select-province optional" name="user_info[province]" id="user_info_province">
-                                      <option value="">请选择省份</option>
-                                  </select>
-                                  <div class="triangle"></div>
-                              </div>
-                              <div class="form-group select optional user_info_city">
-                                  <select class="form-control select select-city optional" name="user_info[city]" id="user_info_city">
-                                    <option value="">请选择城市</option>
-                                  </select>
-                                  <div class="triangle"></div>
-                              </div>
-                              <div class="form-group select optional user_info_county">
-                                  <select class="form-control select select-county optional" name="user_info[county]" id="user_info_county">
-                                    <option value="">请选择县区</option>
-                                  </select>
-                                  <div class="triangle"></div>
-                              </div>
-                              <div class="form-group string optional user_info_address"><input class="form-control string optional" placeholder="详细地址，如街道名称，楼层，门牌号码等" type="text" name="user_info[address]" id="user_info_address"></div>
-                              <div class="boolean-group boolean optional user_info_is_default">
-                                  <div class="checkbox"><input value="0" type="hidden" name="user_info[is_default]">
-                                      <label class="boolean optional" for="user_info_is_default"><input class="boolean optional" type="checkbox" value="1" name="user_info[is_default]" id="user_info_is_default">设为默认</label>
-                                  </div>
-                              </div>
-                              <div class="form-actions">
-                                  <input type="submit" name="commit" value="Create User info" class="btn btn-default user_info_submit dialog-blue-btn" data-disable-with="Create User info">
-                              </div>
-                          </form>
-                      </div>
+                        <div class="user-info-form">
+                            <form novalidate="novalidate" class="simple_form new_user_info" id="new_user_info" action="/user_infos" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+                                <div class="form-group string optional user_info_name"><input class="form-control string optional" placeholder="收货人姓名" type="text" name="user_info[name]" id="user_info_name"></div>
+                                <div class="form-group integer optional user_info_tel"><input class="form-control numeric integer optional" placeholder="手机号" type="number" step="1" name="user_info[tel]" id="user_info_tel"></div>
+                                <div class="form-group select optional user_info_province">
+                                    <select class="form-control select select-province optional" name="user_info[province]" id="user_info_province">
+                                        <option value="">请选择省份</option>
+                                    </select>
+                                    <div class="triangle"></div>
+                                </div>
+                                <div class="form-group select optional user_info_city">
+                                    <select class="form-control select select-city optional" name="user_info[city]" id="user_info_city">
+                                        <option value="">请选择城市</option>
+                                    </select>
+                                    <div class="triangle"></div>
+                                </div>
+                                <div class="form-group select optional user_info_county">
+                                    <select class="form-control select select-county optional" name="user_info[county]" id="user_info_county">
+                                        <option value="">请选择县区</option>
+                                    </select>
+                                    <div class="triangle"></div>
+                                </div>
+                                <div class="form-group string optional user_info_address"><input class="form-control string optional" placeholder="详细地址，如街道名称，楼层，门牌号码等" type="text" name="user_info[address]" id="user_info_address"></div>
+                                <div class="boolean-group boolean optional user_info_is_default">
+                                    <div class="checkbox"><input value="0" type="hidden" name="user_info[is_default]">
+                                        <label class="boolean optional" for="user_info_is_default"><input class="boolean optional" type="checkbox" value="1" name="user_info[is_default]" id="user_info_is_default">设为默认</label>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <input type="submit" name="commit" value="Create User info" class="btn btn-default user_info_submit dialog-blue-btn" data-disable-with="Create User info">
+                                </div>
+                            </form>
+                        </div>
                     </div>
 
                 </div>
@@ -214,47 +214,47 @@
                 <!-- Modal content-->
                 <div class="modal-content">
 
-                  <div class="topbar">
-                      <div class="dialog-tit">
-                          <h4 >管理收货地址</h4>
-                      </div>
-                      <button type="button" class="close dialog-close" data-dismiss="modal">&times;</button>
-                  </div>
+                    <div class="topbar">
+                        <div class="dialog-tit">
+                            <h4 >管理收货地址</h4>
+                        </div>
+                        <button type="button" class="close dialog-close" data-dismiss="modal">&times;</button>
+                    </div>
 
                     <div class="modal-body-edit">
-                      <div class="user-info-form">
-                        <form novalidate="novalidate" class="simple_form edit_user_info" id="edit_user_info_80" action="/user_infos/80" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch">
-                            <div class="form-group string optional user_info_name"><input class="form-control string optional" placeholder="收货人姓名" type="text" value="" name="user_info[name]" id="user_info_name"></div>
-                            <div class="form-group integer optional user_info_tel"><input class="form-control numeric integer optional" placeholder="手机号" type="number" step="1" value="" name="user_info[tel]" id="user_info_tel"></div>
-                            <div class="form-group select optional user_info_province">
-                                <select class="form-control select select-province edit-area optional" name="user_info[province]" id="user_info_province">
-                                    <option id="edit-province"value="">请选择省份</option>
-                                </select>
-                                <div class="triangle"></div>
-                            </div>
-                            <div class="form-group select optional user_info_city">
-                                <select class="form-control select select-city edit-area optional" name="user_info[city]" id="user_info_city">
-                                    <option id="edit-city"value="">请选择城市</option>
-                                </select>
-                                <div class="triangle"></div>
-                            </div>
-                            <div class="form-group select optional user_info_county">
-                                <select class="form-control select select-county edit-area optional" name="user_info[county]" id="user_info_county">
-                                    <option id="edit-county"value="">请选择县区</option>
-                                </select>
-                                <div class="triangle"></div>
-                            </div>
-                            <div class="form-group string optional user_info_address"><input class="form-control string optional" placeholder="详细地址，如街道名称，楼层，门牌号码等" type="text" value="" name="user_info[address]" id="user_info_address"></div>
-                            <div class="boolean-group boolean optional user_info_is_default">
-                                <div class="checkbox"><input value="0" type="hidden" name="user_info[is_default]">
-                                    <label class="boolean optional" for="user_info_is_default"><input class="boolean optional edit-is-default" type="checkbox" value="1" name="user_info[is_default]" id="user_info_is_default">设为默认</label>
+                        <div class="user-info-form">
+                            <form novalidate="novalidate" class="simple_form edit_user_info" id="edit_user_info_80" action="/user_infos/80" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch">
+                                <div class="form-group string optional user_info_name"><input class="form-control string optional" placeholder="收货人姓名" type="text" value="" name="user_info[name]" id="user_info_name"></div>
+                                <div class="form-group integer optional user_info_tel"><input class="form-control numeric integer optional" placeholder="手机号" type="number" step="1" value="" name="user_info[tel]" id="user_info_tel"></div>
+                                <div class="form-group select optional user_info_province">
+                                    <select class="form-control select select-province edit-area optional" name="user_info[province]" id="user_info_province">
+                                        <option id="edit-province" value="">请选择省份</option>
+                                    </select>
+                                    <div class="triangle"></div>
                                 </div>
-                            </div>
-                            <div class="form-actions">
-                                <input type="submit" name="commit" value="Update User info" class="btn btn-default user_info_submit dialog-blue-btn" data-disable-with="Update User info">
-                            </div>
-                        </form>
-                      </div>
+                                <div class="form-group select optional user_info_city">
+                                    <select class="form-control select select-city edit-area optional" name="user_info[city]" id="user_info_city">
+                                        <option id="edit-city" value="">请选择城市</option>
+                                    </select>
+                                    <div class="triangle"></div>
+                                </div>
+                                <div class="form-group select optional user_info_county">
+                                    <select class="form-control select select-county edit-area optional" name="user_info[county]" id="user_info_county">
+                                        <option id="edit-county" value="">请选择县区</option>
+                                    </select>
+                                    <div class="triangle"></div>
+                                </div>
+                                <div class="form-group string optional user_info_address"><input class="form-control string optional" placeholder="详细地址，如街道名称，楼层，门牌号码等" type="text" value="" name="user_info[address]" id="user_info_address"></div>
+                                <div class="boolean-group boolean optional user_info_is_default">
+                                    <div class="checkbox"><input value="0" type="hidden" name="user_info[is_default]">
+                                        <label class="boolean optional" for="user_info_is_default"><input class="boolean optional edit-is-default" type="checkbox" value="1" name="user_info[is_default]" id="user_info_is_default">设为默认</label>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <input type="submit" name="commit" value="Update User info" class="btn btn-default user_info_submit dialog-blue-btn" data-disable-with="Update User info">
+                                </div>
+                            </form>
+                        </div>
 
                     </div>
 
@@ -267,66 +267,100 @@
     </div>
     <br><br>
     <script type="text/javascript">
-        $(function () {
-            $('.address-wrap').click(function () {
-                $(this).css('border-color', '#6A8FE5')
-                $(this).siblings().css('border-color', '#E5E5E5')
-            })
-            //---------省市县下拉菜单----------// 默认初始值
+        $('#ajax-load').click(function (e) {
+            var id = $('.selected-address')
 
-            window.onload=function(){
+            var url = $(this).attr("href");
+            $.ajax(url, {
+                success: function (response) {
+                    $("#content").html(response);
+                }
+            });
+})
+            $(function () {
+                $('.address-wrap').click(function () {
+                    $(this).toggleClass('selected-address')
+                    var not_selected = $(this).siblings('.selected-address')
+                    if (not_selected) {
+                      not_selected.each(function () {
+                        $(this).toggleClass('selected-address')
+                      })
+                    }
+                })
+
+                //---------省市县下拉菜单----------// 默认初始值
+
+                window.onload = function () {
                     var province = world['中国'];
                     appSelect(province, select_province);
                     var city = china['北京'];
                     appSelect(city, select_city);
                     var county = cityChina['东城'];
                     appSelect(county, select_county);
-            }//已经把所有数据录入，但没有实现联动。
+                } //已经把所有数据录入，但没有实现联动。
 
-            //得到所有选项
-            var select = $('select')
-            var select_province = $('.select-province')
-            var select_city = $('.select-city')
-            var select_county = $('.select-county')
-            function appSelect(area, select) {
-                var documentFragment = $(document.createDocumentFragment());
-                $.each(area, function (key, val) { //只有一个参数就会只有数组下标
-                    var option = $('<option></option>')
-                    option.val(val)
-                    option.html(val)
-                    documentFragment.append(option)
+                //得到所有选项
+                var select = $('select')
+                var select_province = $('.select-province')
+                var select_city = $('.select-city')
+                var select_county = $('.select-county')
+                function appSelect(area, select) {
+                    var documentFragment = $(document.createDocumentFragment());
+                    $.each(area, function (key, val) { //只有一个参数就会只有数组下标
+                        var option = $('<option></option>')
+                        option.val(val)
+                        option.html(val)
+                        documentFragment.append(option)
+                    })
+                    select.append(documentFragment[0])
+                }
+
+                select.change(function () {
+                    if ($(this).hasClass('select-province')) {
+                        console.log($(this));
+                        $('.select-city').empty()
+                        $('.select-county').empty()
+                        var city = china[this.value];
+                        select_city = $(this).parent().next().children('.select-city')
+                        appSelect(city, select_city)
+                        console.log(select_city);
+                        var county = cityChina[select_city.val()];
+                        console.log(county);
+
+                        select_county = $(this).parent().next().next().children('select')
+                        console.log($(this).parent().next().next().children('select'));
+
+                        appSelect(county, select_county)
+                    }
+                    if ($(this).hasClass('select-city')) {
+                        $('.select-county').empty()
+                        var county = cityChina[this.value];
+                        console.log(county);
+                        appSelect(county, select_county)
+                    }
                 })
-                select.append(documentFragment[0])
-            }
+                //---------省市县下拉菜单---------- 点击确认结账，提交订单
+                $('.blue-large-btn').click(function () {
+                  var select_id = $('.selected-address').attr('id')
+                  console.log(select_id);
+                  var id
+                  if (select_id) {
+                     id = select_id.substring(8,11)
+                  }
+                  $('.new_order').attr('action','/orders?user_info_id='+id)
+                  console.log(id);
+                  // var url = '/orders?id=id'
+                  // $.post(
+                  //   url,
+                  //   {'user_info.id':id},
+                  //   {
+                  //     success: function (response) {
+                  //         // $("#content").html(response);
+                  //         alert('2')
+                  //     }
+                  // });
 
-            select.change(function () {
-                if ($(this).hasClass('select-province') ) {
-                  console.log($(this));
-                    $('.select-city').empty()
-                    $('.select-county').empty()
-                    var city = china[this.value];
-                    select_city = $(this).parent().next().children('.select-city')
-                    appSelect(city, select_city)
-                    console.log(select_city);
-                    var county = cityChina[select_city.val()];
-                    console.log(county);
-
-                    select_county = $(this).parent().next().next().children('select')
-                    console.log($(this).parent().next().next().children('select'));
-
-                    appSelect(county, select_county)
-                }
-                if ($(this).hasClass('select-city')) {
-                    $('.select-county').empty()
-                    var county = cityChina[this.value];
-                    console.log(county);
-                    appSelect(county, select_county)
-                }
+                    $('.new_order').submit();
+                })
             })
-            //---------省市县下拉菜单----------
-            // 点击确认结账，提交订单
-            $('.blue-large-btn').click(function () {
-                $('form').submit();
-            })
-        })
     </script>
