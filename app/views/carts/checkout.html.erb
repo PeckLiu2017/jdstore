@@ -157,23 +157,46 @@
                 <!-- Modal content-->
                 <div class="modal-content">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                    <div class="topbar">
+                        <div class="dialog-tit">
+                            <h4 >管理收货地址</h4>
+                        </div>
+                        <button type="button" class="close dialog-close" data-dismiss="modal">&times;</button>
                     </div>
 
                     <div class="modal-body">
-                        <%= simple_form_for @user_info,:remote => true do |f| %>
-                        <%= f.input :name,label:false,input_html: { value: "刘潇阳" }  %>
-                        <%= f.input :tel,label:false,input_html: { value: "1813" }  %>
-                        <%= f.input :province,label:false,collection: [],prompt:"请选择省份" %>
-                        <%= f.input :city,label:false,collection: [],prompt:"请选择城市" %>
-                        <%= f.input :county,label:false,collection: [],prompt:"请选择县区" %>
-                        <%= f.input :address,label:false %>
-                        <div class="form-actions">
-                            <%= f.button :submit,:class=>"user_info_submit" %>
+                        <div class="user-info-form">
+                            <%= simple_form_for @user_info,:remote => true do |f| %>
+                            <%= f.input :name,label:false,placeholder:"收货人姓名"  %>
+                            <%= f.input :tel,label:false,placeholder:"手机号"  %>
+                            <%#= f.input :province,label:false,collection: [],prompt:"请选择省份" %>
+                            <div class="form-group select optional user_info_province">
+                                <select class="form-control select optional" name="user_info[province]" id="user_info_province">
+                                    <option value="">请选择省份</option>
+                                </select>
+                                <div class="triangle"></div>
+                            </div>
+                            <div class="form-group select optional user_info_city">
+                                <select class="form-control select optional" name="user_info[city]" id="user_info_city">
+                                    <option value="">请选择城市</option>
+                                </select>
+                                <div class="triangle"></div>
+                            </div>
+                            <div class="form-group select optional user_info_county">
+                                <select class="form-control select optional" name="user_info[county]" id="user_info_county">
+                                    <option value="">请选择县区</option>
+                                </select>
+                                <div class="triangle"></div>
+                            </div>
+                            <%#= f.input :city,label:false,collection: [],prompt:"请选择城市" %>
+                            <%#= f.input :county,label:false,collection: [],prompt:"请选择县区" %>
+                            <%= f.input :address,label:false,placeholder:"详细地址，如街道名称，楼层，门牌号码等" %>
+                            <div class="form-actions">
+                                <%= f.button :submit,:class=>"user_info_submit dialog-blue-btn" %>
+                            </div>
+                            <% end %>
+
                         </div>
-                        <% end %>
                     </div>
 
                     <div class="modal-footer">

@@ -293,7 +293,6 @@
             user-select: none;
 
             .address-item {
-
                 .name-section {
                     height: 16px;
                     padding-right: 20px;
@@ -387,8 +386,141 @@
 @media (min-width: 768px) {
     .modal-dialog {
         width: 450px !important;
-        margin: 10% auto !important;
+        // margin: 10% auto !important;
         /*这里的百分比好像是从整个窗口的高度算的*/
+    }
+}
+
+.modal-content {
+    width: 450px;
+    background: #FFF;
+    height: 592px!important;
+    position: relative;
+    width: 436px;
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset, 1px 0 3px rgba(0,0,0,.1);
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+
+    .topbar {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 60px;
+        background: #F5F5F5;
+        background: linear-gradient(#FFF,#F5F5F5);
+        border-bottom: 1px solid #DCDCDC;
+        border-radius: 10px 10px 0 0;
+        box-shadow: 2px 0 5px rgba(0,0,0,.1);
+
+        .dialog-tit {
+            height: 60px;
+            padding: 0 15px;
+            line-height: 60px;
+
+            h4 {
+                text-align: center;
+                font-size: 18px;
+                font-weight: 400;
+                color: #666;
+                line-height: 60px;
+                margin: 0;
+            }
+        }
+
+        .dialog-close {
+            overflow: hidden;
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: 15px;
+            z-index: 20;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            color: #000;
+            opacity: 0.2;
+            cursor: pointer;
+            -webkit-transition: all 0.3s linear;
+            -moz-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+    }
+
+    .modal-body {
+        min-width: 220px;
+        min-height: 150px;
+
+        .user-info-form {
+            width: 370px;
+            margin: 15px auto;
+
+            .triangle {
+                width: 0;
+                height: 0;
+                position: absolute;
+                right: 5%;
+                bottom: 25%;
+                border: 6px solid #333333;
+                border-left-color: transparent;
+                border-bottom-color: transparent;
+                border-right-color: transparent;
+            }
+
+            .form-group {
+                position: relative;
+                height: 46px;
+                background: #FFF;
+                border: 1px solid #CCC;
+                border-radius: 6px;
+                box-shadow: 0 3px 5px -4px rgba(0,0,0,.4) inset, -1px 0 3px -2px rgba(0,0,0,.1) inset;
+                line-height: 46px;
+                font-size: 18px;
+                opacity: 0.618;
+                -moz-transition: opacity 0.3s ease;
+                -webkit-transition: opacity 0.3s ease;
+                transition: opacity 0.3s ease;
+
+                input {
+                    padding: 0 15px;
+                    background-color: transparent;
+                    border: none;
+                    font-size: 16px;
+                    height: 46px;
+                }
+
+                select {
+                    font-weight: 400;
+                    height: 44px;
+                    padding: 0 15px;
+                    margin: 0;
+                    background: -webkit-linear-gradient(top,#FAFAFA,#F5F5F5);
+                    background: linear-gradient(#FAFAFA,#F5F5F5);
+                    border: none;
+                    border-radius: 6px;
+                    box-shadow: 2px 0 0 rgba(255,255,255,.4) inset, 1px 0 0 rgba(255,255,255,.3);
+                    line-height: 48px;
+                    text-indent: 0;
+                    outline: 0;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    cursor: pointer;
+                }
+            }
+
+            .dialog-blue-btn {
+                width: 100%;
+                height: 46px;
+                padding: 1px;
+                background: #6383C6;
+                background: linear-gradient(#6383C6,#4262AF);
+                border-radius: 6px;
+                color: #FFF;
+            }
+        }
     }
 }
 /*order*/
