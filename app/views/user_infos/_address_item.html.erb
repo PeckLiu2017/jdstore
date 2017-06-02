@@ -1,15 +1,18 @@
-    <div class="address-item" id="address-item-<%=user_info.id%>">
-        <div class="name-section">
-            <%=user_info.name %>
-        </div>
-        <div class="mobile-section">
-            <%=user_info.tel %>
-        </div>
-        <div class="detail-section">
-            <%=user_info.province %>
-            <br>
-            <%=user_info.city %>
-            <br>
-            <%=user_info.county %>
-        </div>
+<div class="address-item" id="address-item-<%=user_info.id%>">
+    <div class="name-section">
+        <%=user_info.name %>
+        <span>
+          <% if user_info.is_default == true %>
+            (默认地址)
+            <% end %>
+        </span>
     </div>
+    <div class="mobile-section">
+        <%=user_info.tel %>
+    </div>
+    <div class="detail-section">
+      <%=user_info.province %>   <%=user_info.city %>   <%=user_info.county %>
+      <br>
+      <%=user_info.address %>
+    </div>
+</div>

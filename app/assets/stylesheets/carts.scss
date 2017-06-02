@@ -276,7 +276,7 @@
             padding: 19px 14px 0 19px;
             background: #FFF;
             position: relative;
-            overflow: scroll;
+            overflow: hidden;
             float: left;
             width: 276px;
             height: 158px;
@@ -450,7 +450,7 @@
         }
     }
 
-    .modal-body {
+    .modal-body,.modal-body-edit {
         min-width: 220px;
         min-height: 150px;
 

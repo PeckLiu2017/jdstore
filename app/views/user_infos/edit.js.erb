@@ -6,10 +6,25 @@
 // console.log(address.children('#user_info_province'));
 // address.children('#user_info_province').val('<%= @user_info.province%>')
 // $('.trigger-edit').click()
-var address = $("#address-<%=@user_info.id%>");//要更改的是这块
+// var address = $("#address-<%=@user_info.id%>");//要更改的是这块
 
 $('.trigger-edit').click()//获得编辑区域，编辑完要ajax提交
 
-<% html = j( render :partial => "form", :locals => { :user_info => @user_info } ) %>
+//将数据手动录进去，别的实在不会写～～～
+var form = $('.modal-body-edit').children('.user-info-form').children('form')
+form.attr('id','edit_user_info_<%=@user_info.id %>')
+form.attr('action','/user_infos/<%=@user_info.id %>')
+form.children('.user_info_name').children('input').val('<%= @user_info.name%>')
+form.children('.user_info_tel').children('input').val('<%= @user_info.tel%>')
+form.children('.user_info_province').children('select').children('#edit-province').val('<%= @user_info.province%>')
+form.children('.user_info_province').children('select').children('#edit-province').text('<%= @user_info.province%>')
+form.children('.user_info_city').children('select').children('#edit-city').val('<%= @user_info.city%>')
+form.children('.user_info_city').children('select').children('#edit-city').text('<%= @user_info.city%>')
 
-$('.modal-body-edit').html("<%= html %>")
+form.children('.user_info_county').children('select').children('#edit-county').val('<%= @user_info.county%>')
+form.children('.user_info_county').children('select').children('#edit-county').text('<%= @user_info.county%>')
+
+form.children('.user_info_address').children('input').val('<%= @user_info.address%>')
+<% if @user_info.is_default == true %>
+form.children('.user_info_is_default').children('.edit-is-default').checked = true
+<% end %>

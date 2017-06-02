@@ -2,20 +2,23 @@
     <div class="address-item" id="address-item-<%=user_info.id%>">
         <div class="name-section">
             <%=user_info.name %>
+            <span>
+            <% if user_info.is_default == true %>
+            (默认地址)
+            <% end %>
+            </span>
         </div>
         <div class="mobile-section">
             <%=user_info.tel %>
         </div>
         <div class="detail-section">
-            <%=user_info.province %>
+            <%=user_info.province %>   <%=user_info.city %>   <%=user_info.county %>
             <br>
-            <%=user_info.city %>
-            <br>
-            <%=user_info.county %>
+            <%=user_info.address %>
         </div>
     </div>
     <div class="operation-section">
-      <a class="update-btn" id="update-<%=user_info.id%>" data-remote="true" rel="nofollow"  href="/user_infos/<%=user_info.id%>/edit" >修改</a>
+        <a class="update-btn" id="update-<%=user_info.id%>" data-remote="true" rel="nofollow" href="/user_infos/<%=user_info.id%>/edit">修改</a>
         <%#= link_to "修改", edit_user_info_path(user_info), :method => :post, :class => "update-btn", :remote => true %>
         <!-- <span class="update-btn js-edit-address" data-toggle="modal" data-target="#myModal">修改</span> -->
         <%= link_to "删除", user_info_path(user_info), :method => :delete, :class => "delete-btn", :remote => true %>

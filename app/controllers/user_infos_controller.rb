@@ -21,7 +21,7 @@ class UserInfosController < ApplicationController
   def edit
     respond_to do |format|
       format.html
-      format.js 
+      format.js
     end
   end
 
@@ -29,27 +29,16 @@ class UserInfosController < ApplicationController
   # POST /user_infos.json
   def create
     @user_info = UserInfo.new(user_info_params)
+    @user_infos = UserInfo.all
+    if @user_info.is_default ==  true
+      @user_infos.each do |userinfo|
+        userinfo.is_default = false
+        userinfo.save
+      end
+      @user_info.is_default =  true
+    end
     @user_info.user = current_user
-
-    # @order = Order.new
-    # @order.user = current_user
-    # @order.total = current_cart.total_price
-    # @order.save
-    #
-    # if @user_info.save
-    #     current_cart.cart_items.each do |cart_item|
-    #     product_list = ProductList.new
-    #     product_list.order = @order
-    #     product_list.product_name = cart_item.product.title
-    #     product_list.product_price = cart_item.product.price
-    #     product_list.quantity = cart_item.product.purchase_quantity
-    #     product_list.save
-    #   end
     @user_info.save
-    # respond_to do |format|
-    #   format.js{ render :show, status: :ok, location: @user_info }
-    # end
-
   end
 
   # PATCH/PUT /user_infos/1
@@ -57,6 +46,18 @@ class UserInfosController < ApplicationController
   def update
 
       if @user_info.update(user_info_params)
+
+        @user_infos = UserInfo.all
+        if @user_info.is_default ==  true
+          @user_infos.each do |userinfo|
+            if @user_info != userinfo
+              userinfo.is_default = false
+              userinfo.save
+            end
+          end
+        end
+        # @user_info.is_default =  true
+
         respond_to do |format|
           format.html {
             redirect_to user_info_path(@user_info)
@@ -84,6 +85,6 @@ class UserInfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_info_params
-      params.require(:user_info).permit(:user_id, :name, :tel, :address,:province,:city,:county)
+      params.require(:user_info).permit(:user_id, :name, :tel, :address,:province,:city,:county,:is_default)
     end
 end
