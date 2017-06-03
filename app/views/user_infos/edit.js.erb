@@ -10,19 +10,43 @@
 
 $('.trigger-edit').click()//获得编辑区域，编辑完要ajax提交
 
+
+
+
 //将数据手动录进去，别的实在不会写～～～
 var form = $('.modal-body-edit').children('.user-info-form').children('form')
 form.attr('id','edit_user_info_<%=@user_info.id %>')
 form.attr('action','/user_infos/<%=@user_info.id %>')
 form.children('.user_info_name').children('input').val('<%= @user_info.name%>')
 form.children('.user_info_tel').children('input').val('<%= @user_info.tel%>')
-form.children('.user_info_province').children('select').children('#edit-province').val('<%= @user_info.province%>')
-form.children('.user_info_province').children('select').children('#edit-province').text('<%= @user_info.province%>')
-form.children('.user_info_city').children('select').children('#edit-city').val('<%= @user_info.city%>')
-form.children('.user_info_city').children('select').children('#edit-city').text('<%= @user_info.city%>')
 
-form.children('.user_info_county').children('select').children('#edit-county').val('<%= @user_info.county%>')
-form.children('.user_info_county').children('select').children('#edit-county').text('<%= @user_info.county%>')
+var select_province_option = $('.modal-body-edit').find('.edit-province').children()
+$.each(select_option, function (key, val) { //只有一个参数就会只有数组下标
+var user_province = '<%= @user_info.province%>'
+if (user_province == val.value) {
+  $(this).attr('selected','selected')
+}
+})
+
+var select_city_option = $('.modal-body-edit').find('.edit-city').children()
+$.each(select_city_option, function (key, val) { //只有一个参数就会只有数组下标
+var user_city = '<%= @user_info.city%>'
+if (user_city == val.value) {
+  console.log($(this));
+  $(this).attr('selected','selected')
+}
+})
+
+var select_county_option = $('.modal-body-edit').find('.edit-county').children()
+
+$.each(select_county_option, function (key, val) { //只有一个参数就会只有数组下标
+var user_county = '<%= @user_info.county%>'
+
+if (user_county == val.value) {
+  $(this).attr('selected','selected')
+}
+})
+
 
 form.children('.user_info_address').children('input').val('<%= @user_info.address%>')
 <% if @user_info.is_default == true %>

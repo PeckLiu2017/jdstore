@@ -78,12 +78,12 @@
         </div>
         <div class="bottom">
             <div class="bottom-right col-md-6 pull-right">
-                <div class="col-sm-6 pull-right">
+                <div class="col-sm-4 pull-right">
                     <a href="javascript:void(0)" class="blue-large-btn pull-right">确认结账</a>
                     <%#= link_to("确认结账", checkout_carts_path, method: :post, class: "blue-large-btn pull-right") %>
                 </div>
                 <div class="render-cart-total-price pull-right">
-                    应付金额:<span id="render-cart-total-price">¥<%= render_cart_total_price(current_cart) %></span>
+                    应付金额：<span id="render-cart-total-price">&nbsp;¥ <%= render_cart_total_price(current_cart) %></span>
                 </div>
             </div>
         </div>
@@ -170,19 +170,19 @@
                                 <div class="form-group string optional user_info_name"><input class="form-control string optional" placeholder="收货人姓名" type="text" name="user_info[name]" id="user_info_name"></div>
                                 <div class="form-group integer optional user_info_tel"><input class="form-control numeric integer optional" placeholder="手机号" type="number" step="1" name="user_info[tel]" id="user_info_tel"></div>
                                 <div class="form-group select optional user_info_province">
-                                    <select class="form-control select select-province optional" name="user_info[province]" id="user_info_province">
-                                        <option value="">请选择省份</option>
+                                    <select class="form-control select new-province select-province optional" name="user_info[province]" id="user_info_province">
+                                        <option  value="">请选择省份</option>
                                     </select>
                                     <div class="triangle"></div>
                                 </div>
                                 <div class="form-group select optional user_info_city">
-                                    <select class="form-control select select-city optional" name="user_info[city]" id="user_info_city">
+                                    <select class="form-control select new-city select-city optional" name="user_info[city]" id="user_info_city">
                                         <option value="">请选择城市</option>
                                     </select>
                                     <div class="triangle"></div>
                                 </div>
                                 <div class="form-group select optional user_info_county">
-                                    <select class="form-control select select-county optional" name="user_info[county]" id="user_info_county">
+                                    <select class="form-control select new-county select-county optional" name="user_info[county]" id="user_info_county">
                                         <option value="">请选择县区</option>
                                     </select>
                                     <div class="triangle"></div>
@@ -194,7 +194,7 @@
                                     </div>
                                 </div>
                                 <div class="form-actions">
-                                    <input type="submit" name="commit" value="Create User info" class="btn btn-default user_info_submit dialog-blue-btn" data-disable-with="Create User info">
+                                    <input type="submit" name="commit" value="创建" class="btn btn-default user_info_submit dialog-blue-btn create_user_info" data-disable-with="Create User info">
                                 </div>
                             </form>
                         </div>
@@ -227,19 +227,19 @@
                                 <div class="form-group string optional user_info_name"><input class="form-control string optional" placeholder="收货人姓名" type="text" value="" name="user_info[name]" id="user_info_name"></div>
                                 <div class="form-group integer optional user_info_tel"><input class="form-control numeric integer optional" placeholder="手机号" type="number" step="1" value="" name="user_info[tel]" id="user_info_tel"></div>
                                 <div class="form-group select optional user_info_province">
-                                    <select class="form-control select select-province edit-area optional" name="user_info[province]" id="user_info_province">
+                                    <select class="form-control select select-province edit-province optional" name="user_info[province]" id="user_info_province">
                                         <option id="edit-province" value="">请选择省份</option>
                                     </select>
                                     <div class="triangle"></div>
                                 </div>
                                 <div class="form-group select optional user_info_city">
-                                    <select class="form-control select select-city edit-area optional" name="user_info[city]" id="user_info_city">
+                                    <select class="form-control select select-city edit-city optional" name="user_info[city]" id="user_info_city">
                                         <option id="edit-city" value="">请选择城市</option>
                                     </select>
                                     <div class="triangle"></div>
                                 </div>
                                 <div class="form-group select optional user_info_county">
-                                    <select class="form-control select select-county edit-area optional" name="user_info[county]" id="user_info_county">
+                                    <select class="form-control select select-county edit-county optional" name="user_info[county]" id="user_info_county">
                                         <option id="edit-county" value="">请选择县区</option>
                                     </select>
                                     <div class="triangle"></div>
@@ -251,7 +251,7 @@
                                     </div>
                                 </div>
                                 <div class="form-actions">
-                                    <input type="submit" name="commit" value="Update User info" class="btn btn-default user_info_submit dialog-blue-btn" data-disable-with="Update User info">
+                                    <input type="submit" name="commit" value="保存修改" class="btn btn-default user_info_submit dialog-blue-btn update_user_info" data-disable-with="Update User info">
                                 </div>
                             </form>
                         </div>
@@ -280,57 +280,229 @@
                     }
                 })
 
-                //---------省市县下拉菜单----------// 默认初始值
+//备份新建框修改框
+var edit_modal = $('#myModal-edit')
+var new_modal = $('#myModal')
+var create_user_info = $('.create_user_info')
+var update_user_info = $('.update_user_info')
+                var count = 0;
+create_user_info.click(function () {
+  $('.close').click()
+  count ++;
+})
 
-                window.onload = function () {
+update_user_info.click(function () {
+  count = 0;
+  $('.close').click()
+})
+
+$('select').change(function () {
+    if ($(this).hasClass('select-province')) {
+        //console.log($(this));
+        select_city = $(this).parents('.modal').find('.select-city')
+        //console.log(select_city);
+        select_county = $(this).parents('.modal').find('select-county')
+        //console.log(select_county);
+        $(this).parents('.modal').find('.select-city option:not(:first)').remove()
+        $(this).parents('.modal').find('.select-county option:not(:first)').remove()
+
+        var city = china[this.value];
+        if (this.value.trim() != "") {
+          appSelect(city, select_city)
+        }
+        var county = cityChina[select_city.val()];
+        appSelect(county, select_county)
+    }
+    if ($(this).hasClass('select-city')) {
+        select_county = $(this).parents('.modal').find('select-county')
+        $(this).parents('.modal').find('.select-county option:not(:first)').empty()
+        var county = cityChina[this.value];
+        appSelect(county, select_county)
+    }
+})
+
+
+
+
+                $('.add-section').click(function () {
+
+                  if (count>=1) {
+                    $('.modal').find('.new-province option:not(:first)').remove()
+                    $('.modal').find('.new-city option:not(:first)').remove()
+                    $('.modal').find('.new-county option:not(:first)').remove()
+                  }
+
+                  $('.modal').mouseover(function () {
+                    //console.log($(this));
                     var province = world['中国'];
-                    appSelect(province, select_province);
-                    var city = china['北京'];
-                    appSelect(city, select_city);
-                    var county = cityChina['东城'];
-                    appSelect(county, select_county);
-                } //已经把所有数据录入，但没有实现联动。
+                    var select_1 = $(this).find('.select-province')
+                    // alert($(this).find('.select-province option:first').text())
+                    // $(this).find('.select-province #').selected = "true"
+                    //console.log(select_1);
+                    var select_2 = $(this).find('.select-city')
+                    var select_3 = $(this).find('.select-county')
+                    //console.log(select_1.children().length);
+                    var city = china[select_1.val()]
+                    var county = cityChina[select_2.val()]
+                    if (select_1.children().length == 1) {
+                      appSelect(province, select_1);
+                    }
+                    if (select_2.children().length == 1) {
+                      appSelect(city, select_2);
+                    }
+                    if (select_3.children().length == 1) {
+                      appSelect(county, select_3);
+                    }
+                  })
 
-                //得到所有选项
-                var select = $('select')
-                var select_province = $('.select-province')
-                var select_city = $('.select-city')
-                var select_county = $('.select-county')
-                function appSelect(area, select) {
+                  // if (count >=1 ) {
+                  //   alert($('#myModal-edit'));
+                  //   alert(edit_modal);
+                  //   $('#myModal-edit') = edit_modal
+                  //   $('#myModal') = new_modal
+                  //
+                  //   alert(count)
+                  // }                  // state_code()
+                  // //console.log(count);
+                  //
+                  // // count(count);
+                })
+
+                $('.update-btn').click(function () {
+
+                  $('.modal').mouseover(function () {
+                    //console.log($(this));
+                    var province = world['中国'];
+                    var select_1 = $(this).find('.select-province')
+                    // alert($(this).find('.select-province option:first').text())
+                    // $(this).find('.select-province #').selected = "true"
+                    //console.log(select_1);
+                    var select_2 = $(this).find('.select-city')
+                    var select_3 = $(this).find('.select-county')
+                    //console.log(select_1.children().length);
+                    var city = china[select_1.val()]
+                    var county = cityChina[select_2.val()]
+                    if (select_1.children().length == 1) {
+                      appSelect(province, select_1);
+                    }
+                    if (select_2.children().length == 1) {
+                      appSelect(city, select_2);
+                    }
+                    if (select_3.children().length == 1) {
+                      appSelect(county, select_3);
+                    }
+                  })
+
+                })
+                // function state_code() {
+                //   //console.log('111');
+                //   var state = $('.modal').attr('class')
+                //   //console.log(state);
+                //   if (state.includes('in')) {
+                //     //console.log('111');
+                //     return '111'
+                //   }
+                // }
+
+
+                function appSelect(area, obj) {
                     var documentFragment = $(document.createDocumentFragment());
                     $.each(area, function (key, val) { //只有一个参数就会只有数组下标
                         var option = $('<option></option>')
                         option.val(val)
                         option.html(val)
+                        // option.attr('id',val)
                         documentFragment.append(option)
                     })
-                    select.append(documentFragment[0])
+                    obj.append(documentFragment[0])
                 }
 
-                select.change(function () {
-                    if ($(this).hasClass('select-province')) {
-                        console.log($(this));
-                        $('.select-city').empty()
-                        $('.select-county').empty()
-                        var city = china[this.value];
-                        select_city = $(this).parent().next().children('.select-city')
-                        appSelect(city, select_city)
-                        console.log(select_city);
-                        var county = cityChina[select_city.val()];
-                        console.log(county);
 
-                        select_county = $(this).parent().next().next().children('select')
-                        console.log($(this).parent().next().next().children('select'));
-
-                        appSelect(county, select_county)
-                    }
-                    if ($(this).hasClass('select-city')) {
-                        $('.select-county').empty()
-                        var county = cityChina[this.value];
-                        console.log(county);
-                        appSelect(county, select_county)
-                    }
-                })
+                // //---------省市县下拉菜单----------// 默认初始值
+                //
+                // window.onload = function () {
+                //     var province = world['中国'];
+                //     appSelect(province, select_province);
+                //
+                //     if (select_province.val()) {
+                //       var city = select_province.val()
+                //       appSelect(city, select_city);
+                //
+                //       if (select_city.val()) {
+                //         var county = select_city.val()
+                //         appSelect(city, select_county);
+                //       }
+                //     }
+                //
+                // } //已经把所有数据录入，但没有实现联动。
+                //
+                // $('.modal-body-edit').mouseover(function () {
+                //
+                //   //console.log('1212');
+                //   //console.log($('.modal-body-edit').find('.select-province'));
+                //   var select_1 = $('.modal-body-edit').find('.select-province')
+                //   var select_2 = $('.modal-body-edit').find('.select-city')
+                //   var select_3 = $('.modal-body-edit').find('.select-county')
+                //   //console.log(select_1.val());
+                //   //console.log(select_2.children().length);
+                //   if (select_2.children().length == 1 && select_1.val()) {
+                //     var city = china[select_1.val()]
+                //     appSelect(city, select_city);
+                //   }
+                //   //console.log(select_2.val());
+                //
+                //   if (select_3.children().length == 1 && select_2.val()) {
+                //     var county = cityChina[select_2.val()]
+                //     appSelect(county, select_county);
+                //   }
+                // })
+                //
+                // //得到所有选项
+                // var select = $('select')
+                // var select_province = $('.select-province')
+                // //console.log(select_province);
+                // var select_city = $('.select-city')
+                // //console.log(select_city);
+                // var select_county = $('.select-county')
+                // //console.log(select_county);
+                //
+                //
+                // function appSelect(area, select) {
+                //     var documentFragment = $(document.createDocumentFragment());
+                //     $.each(area, function (key, val) { //只有一个参数就会只有数组下标
+                //         var option = $('<option></option>')
+                //         option.val(val)
+                //         option.html(val)
+                //         documentFragment.append(option)
+                //     })
+                //     select.append(documentFragment[0])
+                // }
+                //
+                // select.change(function () {
+                //     if ($(this).hasClass('select-province')) {
+                //         //console.log($(this));
+                //         select_city = $(this).parent().next().children('.select-city')
+                //         select_county = $(this).parent().next().next().children('select')
+                //         $('.user-info-form').children(:not(:first)).val().empty()//只清除自己附近的选框
+                //         select_county.empty()
+                //         var city = china[this.value];
+                //         appSelect(city, select_city)
+                //         //console.log(select_city);
+                //         var county = cityChina[select_city.val()];
+                //         // //console.log(county);
+                //
+                //         //console.log($(this).parent().next().next().children('select'));
+                //
+                //         appSelect(county, select_county)
+                //     }
+                //     if ($(this).hasClass('select-city')) {
+                //         select_county = $(this).parent().next().children('.select-county')
+                //         select_county.empty()
+                //         var county = cityChina[this.value];
+                //         //console.log(county);
+                //         appSelect(county, select_county)
+                //     }
+                // })
                 //---------省市县下拉菜单---------- 点击确认结账，提交订单
                 $('.blue-large-btn').click(function () {
                   var select_id = $('.selected-address').attr('id')

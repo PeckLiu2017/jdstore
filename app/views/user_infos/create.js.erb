@@ -1,5 +1,5 @@
 $(".box-middle").prepend('<%=escape_javascript render :partial => "user_infos/address_warp",:locals => { :user_info => @user_info } %>');
-$('.name-section').children('span').text(' ')
 <% if @user_info.is_default == true %>
+$('.name-section').children('span').text(' ')
   $('#address-item-<%=@user_info.id%>').children('.name-section').children('span').text(' (默认地址)')
 <% end %>
