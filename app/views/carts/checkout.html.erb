@@ -267,16 +267,6 @@
     </div>
     <br><br>
     <script type="text/javascript">
-        $('#ajax-load').click(function (e) {
-            var id = $('.selected-address')
-
-            var url = $(this).attr("href");
-            $.ajax(url, {
-                success: function (response) {
-                    $("#content").html(response);
-                }
-            });
-})
             $(function () {
                 $('.address-wrap').click(function () {
                     $(this).toggleClass('selected-address')
@@ -342,25 +332,12 @@
                 //---------省市县下拉菜单---------- 点击确认结账，提交订单
                 $('.blue-large-btn').click(function () {
                   var select_id = $('.selected-address').attr('id')
-                  console.log(select_id);
                   var id
                   if (select_id) {
                      id = select_id.substring(8,11)
                   }
                   $('.new_order').attr('action','/orders?user_info_id='+id)
-                  console.log(id);
-                  // var url = '/orders?id=id'
-                  // $.post(
-                  //   url,
-                  //   {'user_info.id':id},
-                  //   {
-                  //     success: function (response) {
-                  //         // $("#content").html(response);
-                  //         alert('2')
-                  //     }
-                  // });
-
-                    $('.new_order').submit();
+                  $('.new_order').submit();
                 })
             })
     </script>

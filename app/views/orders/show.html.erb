@@ -1,7 +1,7 @@
-<div class="container margin-top-40 no-border">
-    <div class="col-md-12">
+<div class="row  bg-gray">
+    <div class="container no-border bg-gray no-padding">
         <!-- 寄送资讯 -->
-        <div class="shipping-detail cart-index">
+        <div class="shipping-detail cart-index" style="min-width:768px;">
             <div class="top">
                 <span>支付订单</span>
             </div>
@@ -20,63 +20,74 @@
                 <p class="text-center" style="color:red;">此订单已完成付款</p>
                 <% end %>
             </div>
+            <div class="bottom clear">
+                <span class="pull-right">
+                    应付金额：
+                    <span style="margin-right: 25px;font-size: 24px;color: #D44D44;">¥ <%= @order.total %>
+                    </span>
+                </span>
+            </div>
         </div>
 
         <!-- 订单明细 -->
-        <div class="product-order-item margin-top-40">
-            <hr>
+
+        <br>
+        <div class="confirm-detail ">
+            <div class="info-title">订单编号</div>
+            <p class="info-detail"><%= @order.created_at.to_s(:number)[2,12]%><%= @order.token[0,2]%></p>
+        </div>
+        <div class="confirm-detail ">
+            <div class="info-title">收货信息</div>
+            <p class="info-detail">姓名：<%= @order.user_info.name %></p>
+            <p class="info-detail">联系电话：<%= @order.user_info.tel %></p>
+            <p class="info-detail">详细地址：<%= @order.user_info.address %></p>
+        </div>
+        <div class="product-order-item " style="min-width:1000px;">
             <div class="product-item-title ">
-                <div class="col-md-6">
+                <div class="product-name pull-left">
                     商品信息
                 </div>
-                <div class="col-md-6">
-                    <div class="col-sm-4 pull-right">
+                <div class="calculate-price pull-right">
+                    <div class="subtotal pull-right">
                         小计
                     </div>
-                    <div class="col-sm-4 pull-right">
+                    <div class="quantity pull-right">
                         数量
                     </div>
-                    <div class="col-sm-4 pull-right">
+                    <div class="product-price pull-right">
                         单价
                     </div>
                 </div>
             </div>
-            <hr>
             <% @product_lists.each do |product_list| %>
             <div class="product-item-detail">
-                <div class="col-md-6">
+                <div class="product-name pull-left">
                     <%= product_list.product_name %>
                 </div>
-                <div class="col-md-6">
-                    <div class="col-sm-4 pull-right">
+                <div class="calculate-price pull-right">
+                    <div class="subtotal pull-right">
                         <%= product_list.product_price * product_list.quantity %>
                     </div>
-                    <div class="col-sm-4 pull-right">
+                    <div class="quantity pull-right">
                         <%= product_list.quantity %>
                     </div>
-                    <div class="col-sm-4 pull-right">
+                    <div class="product-price pull-right">
                         <%= product_list.product_price %>
                     </div>
                 </div>
             </div>
             <hr>
             <% end %>
-            <div class="pull-right margin-top-40">
-                总计
-                <%= @order.total %>
-                CNY
+            <div class="pull-right " style="margin-top:20px">
+                <span style="line-height: 32px;text-align: right;font-size: 16px;font-weight: 500;">
+                    商品总计
+                    <%= @order.total %>
+                    CNY
+                </span>
+                <p>
+                    运费 0 CNY
+                </p>
             </div>
         </div>
-        <br>
-        <div class="confirm-detail">
-            <div class="info-title">订单编号</div>
-            <p class="info-detail"><%= @order.created_at.to_s(:number)[2,12]%><%= @order.token[0,4]%></p>
-        </div>
-        <div class="confirm-detail">
-            <div class="info-title">收货信息</div>
-            <p class="info-detail">姓名：<%= @order.shipping_name %></p>
-            <p class="info-detail">详细地址：<%= @order.shipping_address %></p>
-        </div>
-        <hr>
     </div>
 </div>

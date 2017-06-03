@@ -32,37 +32,67 @@
 /*商品明细*/
 .product-order-item {
     overflow: hidden;
+    border-top: 1px solid #d5d5d5;
     // border: 1px solid gray;
     // border-radius: 10px;
     hr {
         margin: 0;
+        border-top: 1px solid #d5d5d5;
     }
 
+    .product-item-detail,
     .product-item-title {
         height: 80px;
         line-height: 80px;
+        min-width: 500px;
+        padding: 0 15px;
+        overflow: hidden;
+        line-height: 80px;
+
+        .product-name {
+            width: 580px;
+            display: table;
+        }
+
+        .calculate-price {
+            width: 500px;
+            display: table;
+        }
+
+        .product-price,
+        .quantity,
+        .subtotal {
+            width: 120px;
+            padding-right: 29px;
+            text-align: right;
+        }
 
         .product-detail-partial {
             width: 50%;
-
-            .order-product-price,
-            .order-product-quantity,
-            .order-product-subtotal {}
         }
-    }
-
-    .product-item-detail {
-        overflow: hidden;
-        line-height: 80px;
     }
 }
 
 .shipping-detail {
     margin: 5% 0;
+
+    .middle {
+        overflow: hidden;
+    }
+
+    .bottom {
+        height: 60px;
+        padding: 10px;
+        line-height: 40px;
+        background: #f9f9f9;
+        border-top: 1px solid #e5e5e5;
+        box-sizing: border-box;
+
+    }
 }
 
 .confirm-detail {
-    padding: 0 30px 25px;
+    padding: 0 15px 25px;
     border-top: 1px solid #d5d5d5;
 
     .info-title {
