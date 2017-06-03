@@ -1,17 +1,5 @@
-// var address = $(".modal-body-edit");
-// console.log('111');
-// var edit = $('.trigger-edit')
-// console.log($('.trigger-edit'));
-// console.log(address);
-// console.log(address.children('#user_info_province'));
-// address.children('#user_info_province').val('<%= @user_info.province%>')
-// $('.trigger-edit').click()
-// var address = $("#address-<%=@user_info.id%>");//要更改的是这块
 
 $('.trigger-edit').click()//获得编辑区域，编辑完要ajax提交
-
-
-
 
 //将数据手动录进去，别的实在不会写～～～
 var form = $('.modal-body-edit').children('.user-info-form').children('form')
@@ -47,8 +35,8 @@ if (user_county == val.value) {
 }
 })
 
+$('.modal-body-edit').find('.edit_user_info_address').val('<%= @user_info.address%>')
 
-form.children('.user_info_address').children('input').val('<%= @user_info.address%>')
 <% if @user_info.is_default == true %>
 form.children('.user_info_is_default').children('.edit-is-default').checked = true
 <% end %>
