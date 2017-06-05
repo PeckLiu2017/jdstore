@@ -1,6 +1,214 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*app/views/account/orders/index.html.erb*/
+.account-wrapper {
+    position: relative;
+    min-height: 550px;
+
+    .account-sidebar {
+        /*位置*/
+        position: absolute;
+        left: 0;
+        top: 0;
+        /*盒子设置*/
+        padding: 20px 0 0;
+        /*外观背景边框宽高*/
+        border-radius: 10px;
+        border: 1px solid #D1D1D1;
+        border-color: rgba(0,0,0,.14);
+        border-radius: 8px;
+        box-shadow: 0 3px 8px -6px rgba(0,0,0,.1);
+        text-align: center;
+        overflow: hidden;
+        width: 18%;
+
+        .avatar {
+            width: 100%;
+            height: 188px;
+
+            img {
+                width: 168px;
+                height: 168px;
+            }
+        }
+
+        .address,
+        .info,
+        .orders {
+            position: relative;
+            height: 48px;
+            border-top: 1px solid #EBEBEB;
+            line-height: 48px;
+
+            a {
+                display: block;
+                height: 48px;
+                padding: 0 30px;
+                color: #666;
+                -moz-transition: none;
+                -webkit-transition: none;
+                transition: none;
+            }
+
+            a:link {
+                text-decoration: none;
+            }
+            //防止点击之后出现下划线
+            a:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .account-content {
+        margin-left: 230px;
+
+        .gray-box {
+            overflow: hidden;
+            border: 1px solid #D1D1D1;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px -6px rgba(0,0,0,.1);
+
+            .title {
+                height: 60px;
+                padding: 0 10px 0 28px;
+                background: #F5F5F5;
+                background: linear-gradient(#FFF,#F5F5F5);
+                border-bottom: 1px solid #DCDCDC;
+                border-radius: 10px 10px 0 0;
+                box-shadow: 0 1px 7px rgba(0,0,0,.06);
+                line-height: 60px;
+                color: #646464;
+
+                h2 {
+                    float: left;
+                    font-size: 18px;
+                    font-weight: 400;
+                    color: #626262;
+                }
+            }
+
+            .gray-sub-title {
+                height: 38px;
+                padding: 0 24px;
+                background: #EEE;
+                border-top: 1px solid #DBDBDB;
+                border-bottom: 1px solid #DBDBDB;
+                line-height: 38px;
+                font-size: 12px;
+                color: #666;
+
+                a {
+                    float: right;
+                }
+
+                span {
+                    float: right;
+                    text-align: center;
+                }
+
+                .date,
+                .order-id {
+                    float: left;
+                    text-align: left;
+                    display: inline-block;
+                }
+
+                .date {
+                    width: 108px;
+                    padding-left: 6px;
+                }
+
+                .order-detail {
+                    width: 82px;
+                    padding-left: 24px;
+                    text-align: center;
+                }
+
+                .sub-total {
+                    width: 102px;
+                    padding-right: 18px;
+                    border-left: 1px solid #DBDBDB;
+                    text-align: right;
+                }
+
+                .operation {
+                    width: 95px;
+                    height: 38px;
+                    padding-right: 23px;
+                }
+
+                .num {
+                    width: 70px;
+                }
+
+                .price {
+                    width: 85px;
+                    padding-right: 27px;
+                    text-align: right;
+                }
+            }
+            ///
+            .cart {
+                float: left;
+                width: 737px;
+                padding: 0;
+                border-right: 1px solid #EBEBEB;
+
+                .cart-items {
+                    height: 110px;
+                    padding: 0;
+                }
+
+                .num,
+                .operation,
+                .price {
+                    float: right;
+                }
+
+                .prod-info {
+                    padding: 15px 0 15px 30px;
+                    margin-left: 0;
+                    overflow: hidden;
+                    position: relative;
+
+                    .items-params,
+                    .items-thumb {
+                        display: inline-block;
+                    }
+
+                    .items-thumb {
+                        float: left;
+                        border: 1px solid #EBEBEB;
+                        border-radius: 3px;
+
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+
+                    .items-params {
+                        float: left;
+                        height: 80px;
+                        padding: 15px 0;
+                        margin-left: 29px;
+                        border-bottom: none;
+                        line-height: 50px;
+                    }
+                }
+            }
+
+            .prod-operation {
+                float: right;
+                display: table;
+                height: 110px;
+            }
+        }
+    }
+}
+/*app/views/orders/show.html.erb*/
 /*支付宝和微信付款按钮*/
 .pay-button {
     float: left;
@@ -87,7 +295,6 @@
         background: #f9f9f9;
         border-top: 1px solid #e5e5e5;
         box-sizing: border-box;
-
     }
 }
 
@@ -108,3 +315,4 @@
         color: #666;
     }
 }
+/*app/views/orders/show.html.erb*/
