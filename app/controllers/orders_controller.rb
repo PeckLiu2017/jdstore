@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
          current_cart.cart_items.each do |cart_item|
          product_list = ProductList.new
          product_list.order = @order
+         product_list.product_id = cart_item.product.id
          product_list.product_name = cart_item.product.title
          product_list.product_price = cart_item.product.price
          product_list.quantity = cart_item.product.purchase_quantity
@@ -25,6 +26,8 @@ class OrdersController < ApplicationController
       # OrderMailer.notify_order_placed(@order).deliver!
 
        redirect_to order_path(@order.token)
+      # redirect_to order_path(@order)
+
      else
        render 'carts/checkout'
      end
@@ -32,6 +35,10 @@ class OrdersController < ApplicationController
 
    def show
       @order = Order.find_by_token(params[:id])
+      if @order.blank?
+        @order = Order.find_by(token: params["token"])
+        # @user_info = UserInfo.find(params[:user_info_id])
+      end
       @product_lists = @order.product_lists
    end
 

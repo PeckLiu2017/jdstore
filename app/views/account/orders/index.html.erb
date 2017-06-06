@@ -7,7 +7,7 @@
                     <img src="http://static.smartisanos.cn/account/asset/img/default-user-avatar.png">
                 </div>
                 <div class="orders">
-                    <a href="#">我的订单</a>
+                    <a href="/account/orders">我的订单</a>
                 </div>
                 <div class="orders">
                     <a href="#">我的优惠</a>
@@ -25,82 +25,92 @@
 
             <div class="account-content ">
                 <div class="account-order">
-                        <div class="gray-box  bg-white">
-                            <div class="title">
-                                <h2>我的订单</h2>
+                    <div class="gray-box  bg-white">
+                        <div class="title">
+                            <h2>我的订单</h2>
+                        </div>
+                        <% @orders.each do |order| %>
+                        <div class="gray-sub-title ">
+                            <div class="left">
+                                <span class="date"><%= order.created_at.strftime("%Y-%m-%d") %></span>
+                                <span class="order-id ">
+                                    订单号：
+                                    <a href="/account/#/order/detail/170603923509636"><%= order.created_at.to_s(:number)[2,12]%></a>
+                                </span>
+                                <span class="operation">商品操作</span>
+                                <span class="num">数量</span>
+                                <span class="price">单价</span>
                             </div>
-
-                                    <div class="gray-sub-title ">
-                                        <span class="date">2017-06-03</span>
-                                        <span class="order-id ">
-                                            订单号：
-                                            <a href="/account/#/order/detail/170603923509636">170603923509636</a>
-                                        </span>
-                                        <span class="order-detail">
-                                            <a href="/account/orders/">查看详情<em class="icon-font">C</em>
-                                            </a>
-                                        </span>
-                                        <span class="sub-total">应付总额</span>
-                                        <span class="operation">商品操作</span>
-                                        <span class="num">数量</span>
-                                        <span class="price">单价</span>
-                                    </div>
-                                    <div class="cart">
-                                        <div class="cart-items" >
-                                            <div class="prod-info ">
-                                                <div class="items-thumb">
-                                                    <a href="http://www.smartisan.com/shop/#/item/100022201" target="_blank" title="《深泽直人》（平装版）">
-                                                        <img src="http://image.smartisanos.cn/resource/5e4e40120d09fb6791f9430f914c6f68.jpg?x-oss-process=image/resize,w_160/quality,Q_100/format,webp">
-                                                    </a>
-                                                </div>
-                                                <div class="items-params ">
-                                                        <a href="http://www.smartisan.com/shop/#/item/100022201" target="_blank" title="《深泽直人》（平装版）">《深泽直人》（平装版）</a>
-                                                    </div>
-                                                </div>
-                                                <div class="operation">
-                                                    <div class="operation-list"></div>
-                                                </div>
-                                                <div class="num">1</div>
-                                                <div class="price">¥ 199.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="prod-operation">
-                                        <div class="total">¥ 199.00</div>
-                                        <div class="status">
-                                            已关闭
-                                        </div>
-                                    </div>
-
-
+                            <div class="right">
+                                <span class="sub-total">应付总额</span>
+                                <span class="order-detail">
+                                    <a href="/account/orders/">查看详情<em class="icon-font">C</em>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
 
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>生成时间</th>
+                        <% order.product_lists.each do |product_list| %>
+                        <div class="cart">
+                            <div class="cart-items">
+                                <span class="items-thumb">
+                                  <%= link_to account_order_path(order,token:"#{order.token}") do%>
+                                        <img src="http://image.smartisanos.cn/resource/5e4e40120d09fb6791f9430f914c6f68.jpg?x-oss-process=image/resize,w_160/quality,Q_100/format,webp">
+                                  <% end %>
+                                </span>
+                                <span class="items-params ">
+                                  <%= link_to product_path(product_list.product_id) do %>
+                                    <%= product_list.product_name %>
+                                  <% end %>
+                                    <!-- <a href="http://www.smartisan.com/shop/#/item/100022201" target="_blank" title="《深泽直人》（平装版）"></a> -->
+                                </span>
+                                <span class="operation">
+                                    <span class="operation-list"></span>
+                                </span>
+                                <span class="num"><%= product_list.quantity %></span>
+                                <span class="price">¥ <%= product_list.product_price %></span>
+                            </div>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <% @orders.each do |order| %>
-                                <tr>
-                                    <td>
-                                        <%= link_to order.id, order_path(order.token) %>
-                                    </td>
-                                    <td>
-                                        <%= order.created_at.to_s(:long) %>
-                                    </td>
-                                </tr>
-                                <% end %>
-
-                            </tbody>
-                        </table>
+                            <div class="right"></div>
+                        </div>
+                        <% end %>
+                        <% end %>
+                        <!-- <div class="prod-operation">
+                                <span class="total">¥ 199.00</span>
+                                <span class="status">
+                                    已关闭
+                                </span>
+                            </div> -->
+                    </div>
                 </div>
+
             </div>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>生成时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% @orders.each do |order| %>
+                    <tr>
+                        <td>
+                            <%= link_to order.id, order_path(order.token) %>
+                        </td>
+                        <td>
+                            <%= order.created_at.to_s(:long) %>
+                        </td>
+                    </tr>
+                    <% end %>
+
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
+</div>
 
 </div>

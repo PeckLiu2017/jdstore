@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
    before_create :generate_token
-   has_one :user_info
+  #  has_many :user_info
+  belongs_to :user_info
   #  accepts_nested_attributes_for :user_info
 
 

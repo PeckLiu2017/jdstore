@@ -28,7 +28,7 @@ class Admin::OrdersController <  ApplicationController
     end
 
     def cancel
-      @order.cancell_order!
+      @order.cancel_order!
       OrderMailer.notify_cancel(@order).deliver!
       redirect_to :back
     end
