@@ -1,6 +1,6 @@
 <div class="row bg-gray">
     <div class="container no-border bg-gray">
-        <div class="margin-" style="height:40px;"></div>
+        <div style="height:40px;"></div>
         <div class="account-wrapper">
             <div class="account-sidebar bg-white">
                 <div class="avatar">
@@ -10,16 +10,16 @@
                     <a href="/account/orders">我的订单</a>
                 </div>
                 <div class="orders">
-                    <a href="#">我的优惠</a>
+                    <a href="/account/orders/coupon">我的优惠</a>
                 </div>
                 <div class="orders">
-                    <a href="#">售后服务</a>
+                    <a href="/account/orders/support">售后服务</a>
                 </div>
                 <div class="info">
-                    <a href="#">账户资料</a>
+                    <a href="/account/orders/profile">账户资料</a>
                 </div>
                 <div class="address">
-                    <a href="#">收货地址</a>
+                    <a href="/account/orders/address">收货地址</a>
                 </div>
             </div>
 
@@ -29,6 +29,14 @@
                         <div class="title">
                             <h2>我的订单</h2>
                         </div>
+                        <% if @orders.blank? %>
+                        <div class="empty-coupon-list ">
+                            <h2>您目前还没有订单</h2>
+                            <div class="gray-normal-btn ">
+                                <a href="/">返回首页</a>
+                            </div>
+                        </div>
+                        <% else %>
                         <% @orders.each do |order| %>
                         <div class="gray-sub-title ">
                             <div class="left">
@@ -101,42 +109,11 @@
                         </div>
                         <% end %>
                         <% end %>
-                        <!-- <div class="prod-operation">
-                                <span class="total">¥ 199.00</span>
-                                <span class="status">
-                                    已关闭
-                                </span>
-                            </div> -->
+                        <% end %>
                     </div>
                 </div>
 
             </div>
-
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>生成时间</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <% @orders.each do |order| %>
-                    <tr>
-                        <td>
-                            <%= link_to order.id, order_path(order.token) %>
-                        </td>
-                        <td>
-                            <%= order.created_at.to_s(:long) %>
-                        </td>
-                    </tr>
-                    <% end %>
-
-                </tbody>
-            </table>
         </div>
     </div>
-</div>
-</div>
-
 </div>

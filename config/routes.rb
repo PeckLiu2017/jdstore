@@ -65,6 +65,13 @@ Rails.application.routes.draw do
   end
 
   namespace :account do
-    resources :orders
+    resources :orders do
+      collection do
+      get :coupon
+      get :profile
+      get :address
+      get :support
+      end
+    end
   end
 end

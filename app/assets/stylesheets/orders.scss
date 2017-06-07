@@ -81,12 +81,48 @@
                 box-shadow: 0 1px 7px rgba(0,0,0,.06);
                 line-height: 60px;
                 color: #646464;
+                border-bottom: 1px solid #DBDBDB;
 
                 h2 {
                     float: left;
                     font-size: 18px;
                     font-weight: 400;
                     color: #626262;
+                }
+            }
+            //coupon
+            .empty-coupon-list {
+                background: url("../images/empty-coupon.png") top center no-repeat;
+                background-size: 92px auto;
+                padding: 145px 0 150px;
+                margin-top: 105px;
+                text-align: center;
+                font-size: 18px;
+
+                h2 {
+                    line-height: 1em;
+                    font-size: 22px;
+                    color: #999;
+                }
+
+                .gray-normal-btn {
+                    margin-top: 20px;
+                    display: inline-block;
+                    background: #F2F2F2;
+                    background: linear-gradient(#fff,#ececec);
+                    border: 1px solid #dbdde2;
+                    border-radius: 6px;
+                    height: 38px;
+                    line-height: 38px;
+                    cursor: pointer;
+                    overflow: hidden;
+
+                    a {
+                        font-size: 14px;
+                        color: #333;
+                        display: block;
+                        padding: 0 20px;
+                    }
                 }
             }
 
@@ -146,19 +182,6 @@
                         padding-right: 18px;
                         text-align: right;
                     }
-                    // i {
-                    //   position: absolute;
-                    //     border: solid black;
-                    //     border-width: 0 3px 3px 0;
-                    //     display: inline-block;
-                    //     padding: 3px;
-                    //
-                    // }
-                    //
-                    // .right {
-                    //     transform: rotate(-45deg);
-                    //     -webkit-transform: rotate(-45deg);
-                    // }
                 }
 
                 a {
@@ -364,13 +387,14 @@
                     overflow: hidden;
                     padding: 15px 0;
 
-                    .sub-total,.order-detail{
-                      width: 75px;
-                      float: right;
-                      text-align: center;
-                      height: 80px;
-                      line-height: 50px;
-                      padding: 15px 0;
+                    .order-detail,
+                    .sub-total {
+                        width: 75px;
+                        float: right;
+                        text-align: center;
+                        height: 80px;
+                        line-height: 50px;
+                        padding: 15px 0;
                     }
 
                     .blue-small-btn {
@@ -386,7 +410,6 @@
                         font-size: 12px;
                         cursor: pointer;
                     }
-
                 }
 
                 .prod-operation {

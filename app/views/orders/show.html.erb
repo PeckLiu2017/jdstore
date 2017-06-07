@@ -17,7 +17,10 @@
                     <%= link_to("", pay_with_wechat_order_path(@order.token), :method => :post, :class => "pay-button weixinpay-button") %>
                 </div>
             <% else %>
-                <p class="text-center" style="color:red;">此订单已完成付款</p>
+            <input type="hidden" name="" value="已支付" id="paid">
+                <p class="text-center" style="color:red;">此订单已完成付款，<span id="to-index">5</span>秒后
+                </p>
+                <p style="color:red;">将跳转首页</p>
                 <% end %>
             </div>
             <div class="bottom clear">
@@ -91,3 +94,18 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+  $(function () {
+    //5秒后跳回首页
+    if ($('#paid').val() == "已支付") {
+      var timer = 5;
+      setInterval(function () {
+        var to_index = --timer;
+        if (to_index <= 1) {
+          window.location.href='/';
+        }
+        $('#to-index').text(to_index)
+      },1000)
+    }
+  })
+</script>

@@ -17,6 +17,7 @@
       <th>生成时间</th>
       <th>订购者</th>
       <th>订单状态</th>
+      <th>操作</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +27,7 @@
       <td> <%= order.created_at.to_s(:long) %> </td>
       <td> <%= order.user.email %></td>
       <td> <%= order.aasm_state %> </td>
+      <td> <%= link_to "删除",order_path(order) ,method: :delete,:data=>{confirm:"Sure?"}%></td>
     </tr>
     <% end %>
 

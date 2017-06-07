@@ -8,4 +8,21 @@ class Account::OrdersController < ApplicationController
   def show
     @order = Order.find_by(token: params["token"])
   end
+
+  def coupon
+    @orders = current_user.orders.order("id DESC")
+  end
+
+  def profile
+
+  end
+
+  def address
+
+  end
+
+  def support
+
+  end
+
 end
