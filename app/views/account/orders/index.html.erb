@@ -35,7 +35,11 @@
                                 <span class="date"><%= order.created_at.strftime("%Y-%m-%d") %></span>
                                 <span class="order-id ">
                                     订单号：
-                                    <a href="/account/#/order/detail/170603923509636"><%= order.created_at.to_s(:number)[2,12]%></a>
+                                    <%= link_to account_order_path(order,token:"#{order.token}") do%>
+                                    <span style="color: #6989E0;">
+                                        <%= order.created_at.to_s(:number)[2,12]%>
+                                    </span>
+                                    <% end %>
                                 </span>
                                 <span class="operation">商品操作</span>
                                 <span class="num">数量</span>
@@ -44,8 +48,12 @@
                             <div class="right">
                                 <span class="sub-total">应付总额</span>
                                 <span class="order-detail">
-                                    <a href="/account/orders/">查看详情<em class="icon-font">C</em>
-                                    </a>
+                                    <%= link_to account_order_path(order,token:"#{order.token}") do%>
+                                      <span style="color: #6989E0;">
+                                    查看详情
+                                    </span>
+                                    <!-- <i class=" right"></i> -->
+                                    <% end %>
                                 </span>
                             </div>
                         </div>
@@ -54,24 +62,42 @@
                         <div class="cart">
                             <div class="cart-items">
                                 <span class="items-thumb">
-                                  <%= link_to account_order_path(order,token:"#{order.token}") do%>
-                                        <img src="http://image.smartisanos.cn/resource/5e4e40120d09fb6791f9430f914c6f68.jpg?x-oss-process=image/resize,w_160/quality,Q_100/format,webp">
-                                  <% end %>
+                                    <%= link_to product_path(product_list.product_id) do %>
+                                    <!-- <img src="http://image.smartisanos.cn/resource/5e4e40120d09fb6791f9430f914c6f68.jpg?x-oss-process=image/resize,w_160/quality,Q_100/format,webp"> -->
+                                    <%= image_tag(product_list.product_picture) %>
+                                    <% end %>
                                 </span>
                                 <span class="items-params ">
-                                  <%= link_to product_path(product_list.product_id) do %>
+                                    <%= link_to product_path(product_list.product_id) do %>
                                     <%= product_list.product_name %>
-                                  <% end %>
+                                    <% end %>
                                     <!-- <a href="http://www.smartisan.com/shop/#/item/100022201" target="_blank" title="《深泽直人》（平装版）"></a> -->
                                 </span>
                                 <span class="operation">
                                     <span class="operation-list"></span>
                                 </span>
                                 <span class="num"><%= product_list.quantity %></span>
-                                <span class="price">¥ <%= product_list.product_price %></span>
+                                <span class="price">¥
+                                    <%= product_list.product_price %></span>
                             </div>
 
-                            <div class="right"></div>
+                            <div class="right">
+                                <span class="order-detail">
+                                    <% case order.aasm_state %>
+                                    <% when "order_placed" %>
+                                    <a class="blue-small-btn " href="/orders/<%=order.token%>">现在付款</a>
+                                    <% when "paid" %>
+                                    物流中
+                                    <% when "order_cancelled" %>
+                                    订单取消
+                                    <% end %>
+                                </span>
+
+                                <span class="sub-total">
+                                    <%= product_list.product_price * product_list.quantity %>
+                                </span>
+
+                            </div>
                         </div>
                         <% end %>
                         <% end %>

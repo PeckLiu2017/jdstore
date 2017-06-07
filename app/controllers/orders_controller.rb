@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
          product_list.product_name = cart_item.product.title
          product_list.product_price = cart_item.product.price
          product_list.quantity = cart_item.product.purchase_quantity
+         product_list.product_picture = cart_item.product.photos[0].avatar.url
          product_list.save
        end
       current_cart.clean!

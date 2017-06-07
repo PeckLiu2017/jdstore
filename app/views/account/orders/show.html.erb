@@ -78,8 +78,16 @@
                                         </h3>
                                     </div>
                                     <div>
-                                        <a class="blue-small-btn " href="/orders/<%=@order.token%>">现在付款</a>
-                                        <a class="white-gray-small-btn" href="/admin/orders/<%=@order.id%>/cancel" data-method="post">取消订单</a>
+                                      <% case @order.aasm_state %>
+                                      <% when "order_placed" %>
+                                      <a class="blue-small-btn " href="/orders/<%=@order.token%>">现在付款</a>
+                                      <a class="white-gray-small-btn" href="/admin/orders/<%=@order.id%>/cancel" data-method="post">取消订单</a>
+                                      <% when "paid" %>
+                                      感谢支持！
+                                      <a class="white-gray-small-btn" href="/admin/orders/<%=@order.id%>/cancel" data-method="post">取消订单</a>
+                                      <% when "order_cancelled" %>
+                                      感谢支持！欢迎下次光临！
+                                      <% end %>
                                     </div>
                                 </div>
                                 <p>
@@ -90,7 +98,7 @@
                                   <% when "paid" %>
                                   已付款，正在运送中，请等待...
                                   <% when "order_cancelled" %>
-                                  您的订单已取消
+                                  您的订单已取消！
                                   <% end %>
 
 
@@ -117,7 +125,7 @@
                             <div class="right">
                                 <span class="sub-total">应付总额</span>
                                 <span class="order-detail">
-                                    <a href="/account/orders/">查看详情<em class="icon-font">C</em>
+                                    <a href="/account/orders/">查看详情
                                     </a>
                                 </span>
                             </div>
@@ -128,7 +136,8 @@
                             <div class="cart-items">
                                 <span class="items-thumb">
                                     <%= link_to product_path(product_list.product_id) do %>
-                                    <img src="http://image.smartisanos.cn/resource/5e4e40120d09fb6791f9430f914c6f68.jpg?x-oss-process=image/resize,w_160/quality,Q_100/format,webp">
+                                    <!-- <img src="http://image.smartisanos.cn/resource/5e4e40120d09fb6791f9430f914c6f68.jpg?x-oss-process=image/resize,w_160/quality,Q_100/format,webp"> -->
+                                    <%= image_tag(product_list.product_picture) %>
                                     <% end %>
                                 </span>
                                 <span class="items-params ">
@@ -145,7 +154,23 @@
                                     <%= product_list.product_price %></span>
                             </div>
 
-                            <div class="right"></div>
+                            <div class="right">
+                                <span class="order-detail">
+                                    <% case @order.aasm_state %>
+                                    <% when "order_placed" %>
+                                    <a class="blue-small-btn " href="/orders/<%=@order.token%>">现在付款</a>
+                                    <% when "paid" %>
+                                    物流中
+                                    <% when "order_cancelled" %>
+                                    订单取消
+                                    <% end %>
+                                </span>
+
+                                <span class="sub-total">
+                                    <%= product_list.product_price * product_list.quantity %>
+                                </span>
+
+                            </div>
                         </div>
                         <% end %>
                         <!-- <div class="prod-operation">
@@ -168,9 +193,9 @@
         var aasm_state = $('#aasm_state').val()
         console.log(aasm_state);
         if (aasm_state == 'order_placed') {
-            $('.status-process').css('width', '50%')
+            $('.status-process').css('width', '0%')
         } else if (aasm_state == 'paid') {
-            $('.status-process').css('width', '100%')
+            $('.status-process').css('width', '75%')
         } else if (aasm_state == 'order_cancelled') {
             $('.status-process').css('width', '100%')
         }
