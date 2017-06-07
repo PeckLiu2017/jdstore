@@ -513,7 +513,7 @@ $('select').change(function () {
                     alert('请选择收货地址！')
                     return
                   }
-                  $('.new_order').attr('action','/orders?user_info_id='+id)
+                  $('.new_order').attr('action','/orders?userinfoid='+id)
                   $('.new_order').submit();
                 })
             })

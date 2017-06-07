@@ -8,8 +8,8 @@ class OrdersController < ApplicationController
      @order = Order.new(order_params)
      @order.user = current_user
      @order.total = current_cart.total_price
-     user_info_id = params[:user_info_id]
-     @user_info = UserInfo.find(user_info_id)
+     userinfoid = params[:userinfoid]
+     @user_info = UserInfo.find(userinfoid)
      @order.user_info = @user_info
 
      if @order.save
@@ -68,6 +68,6 @@ class OrdersController < ApplicationController
    private
 
    def order_params
-     params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address)
+     params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address,:user_info_id)
    end
 end
