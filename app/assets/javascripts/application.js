@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require autosize.min
 //= require_tree .
+$(function () {
+  if ($('#orders-profile').length > 0) {
+    console.log('orders-profile');
+  }
+})

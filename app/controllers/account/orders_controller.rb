@@ -2,6 +2,7 @@ class Account::OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+      binding.pry
      @orders = current_user.orders.order("id DESC")
   end
 
@@ -15,6 +16,18 @@ class Account::OrdersController < ApplicationController
 
   def profile
 
+    # @user = current_user
+    # @user.nickname =
+  end
+
+  def avatar
+
+  end
+
+  def nickname
+    render '_form'
+    # @user = current_user
+    # @user.nickname =
   end
 
   def address
@@ -25,9 +38,5 @@ class Account::OrdersController < ApplicationController
 
   end
 
-  def nickname
-    # @user = current_user
-    # @user.nickname =
-  end
 
 end
