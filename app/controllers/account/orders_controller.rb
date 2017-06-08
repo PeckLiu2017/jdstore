@@ -25,4 +25,9 @@ class Account::OrdersController < ApplicationController
 
   end
 
+  def nickname
+    # @user = current_user
+    # @user.nickname =
+  end
+
 end

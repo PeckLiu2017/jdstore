@@ -90,6 +90,89 @@
                     color: #626262;
                 }
             }
+            //profile
+            .profile-box {
+                .account-avatar {
+                    position: relative;
+                    height: 124px;
+                    margin: 0 30px;
+                    border-bottom: 1px solid #DBDBDB;
+
+                    div {
+                        display: inline-block;
+                        padding: 22px 0;
+                        width: 15%;
+                    }
+
+                    .account-avatar-image {
+                        margin-left: 20px;
+                        position: relative;
+                        top: -24px;
+
+                        img {
+                            width: 80px;
+                            height: 80px;
+                            border-radius: 2px;
+                        }
+                    }
+
+                    .safe-center-title {
+                        height: 124px;
+
+                        span {
+                            margin: 0;
+                            font-size: 18px;
+                            font-weight: 300;
+                        }
+
+                        .blue-small-btn {
+                            background: #6383C6;
+                            background: linear-gradient(#7EA3F5,#5A82F0);
+                            box-shadow: 0 1px 2px rgba(255,255,255,.1) inset, 0 0 0 1px rgba(0,0,0,.2) inset, 0 1px 3px rgba(0,0,0,.1);
+                            color: #FFF;
+                            margin-top: 4px;
+                            display: inline-block;
+                            height: 30px;
+                            padding: 0 13px;
+                            border-radius: 4px;
+                            line-height: 30px;
+                            font-size: 12px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .email-verify,
+                .login-password,
+                .nickname,
+                .security-verify {
+                  background: url(/images/safe-status.png) 21px 22px no-repeat;
+                  background-size: 24px;
+                    height: 124px;
+                    margin: 0 30px;
+                    border-bottom: 1px solid #DBDBDB;
+                    padding: 20px 60px;
+                    position: relative; //容器盒子一般要设置这个
+
+                    span {
+                        display: block;
+                        font-size: 18px;
+                        font-weight: 300;
+                        margin-bottom: 10px;
+                    }
+
+                    p {
+                        width: 420px;
+                        color: #999;
+                        float: left;
+                    }
+
+                    .opreate{
+                      float: right;
+                    }
+                }
+            }
+            //profile
             //coupon
             .empty-coupon-list {
                 background: url("../images/empty-coupon.png") top center no-repeat;
@@ -125,7 +208,7 @@
                     }
                 }
             }
-
+            //coupon
             .gray-sub-title {
                 height: 38px;
                 padding: 0 24px;
