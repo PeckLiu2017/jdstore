@@ -103,8 +103,8 @@ $(function () {
         carTop = cart_wrap.offset().top
     $('.addCartBtn').click(function () {
       var product;
-      console.log(product);
-      console.log($(this));
+      // console.log(product);
+      // console.log($(this));
       if ($(this).hasClass('cart-fly')) {
         product = $('#thumb')
           console.log(product);
