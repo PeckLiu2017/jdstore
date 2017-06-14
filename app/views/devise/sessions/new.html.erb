@@ -14,44 +14,47 @@
                 <div class="icon"><img src="/images/password.jpg" alt=""></div>
                 <input class="form-control password optional" type="password" name="user[password]" id="user_password">
             </div>
+
+            <%= rucaptcha_image_tag(alt: 'Captcha',class:"pull-left rucaptcha_image_tag") %>
+            <%= rucaptcha_input_tag(class: 'form-control', placeholder: '请输入验证码',class:"pull-right rucaptcha_input_tag") %>
+
             <div class="user-remember-me">
-                <div class="auto">
                     <div class="checkbox">
-                      <label id="checkout-custome" for="user_remember_me" data-check = "1"><input class="boolean optional checkout-custome" type="checkbox" value="1" name="user[remember_me]" id="user_remember_me"></label>
-                        <span>Remember me ?</span><input value="0" type="hidden" name="user[remember_me]">
+                        <label id="checkout-custome" for="user_remember_me" data-check="1"><input class="boolean optional checkout-custome" type="checkbox" value="1" name="user[remember_me]" id="user_remember_me"></label>
+                        <span>记住我 ？</span><input value="0" type="hidden" name="user[remember_me]">
                     </div>
-                </div>
+                    <div class="signUp-or-findPassword ">
+                        <a href="/users/sign_up">Sign up</a>
+                        丨
+                        <a href="/users/password/new">Forgot your password?</a>
+                    </div>
             </div>
-            <%#= f.input :email, label:false,required: false, autofocus: true %>
-            <%#= f.input :password,label:false, required: false %>
-            <%#= f.input :remember_me,label:false, as: :boolean if devise_mapping.rememberable? %>
+
         </div>
-        <div class="signUp-or-findPassword pull-right">
-          <%= render "devise/shared/links" %>
-        </div>
+
         <div class="form-actions">
-          <input type="submit" name="commit" value="Log in" class="btn btn-login" data-disable-with="Log in">
+            <input type="submit" name="commit" value="Log in" class="btn btn-login" data-disable-with="Log in">
         </div>
         <% end %>
 
     </div>
 </div>
 <script type="text/javascript">
-$(function () {
-  $('#checkout-custome').click(function (e) {
-    //点击label事件之后出发了两次click事件，网上搜索是冒泡机制所致，为防止LABEL冒泡，加上这一句。
-    if (e.target.tagName === 'LABEL') {
-      return;
-    }
-    if ($(this).attr('data-check') === '1') {
-      console.log($(this).attr('data-check'));
-      $(this).toggleClass( 'checked', true );
-      $(this).attr('data-check','2');
-    }else {
-      console.log($(this).attr('data-check'));
-      $(this).toggleClass( 'checked', false );
-      $(this).attr('data-check','1')
-    }
-  })
-})
+    $(function () {
+        $('#checkout-custome').click(function (e) {
+            //点击label事件之后出发了两次click事件，网上搜索是冒泡机制所致，为防止LABEL冒泡，加上这一句。
+            if (e.target.tagName === 'LABEL') {
+                return;
+            }
+            if ($(this).attr('data-check') === '1') {
+                console.log($(this).attr('data-check'));
+                $(this).toggleClass('checked', true);
+                $(this).attr('data-check', '2');
+            } else {
+                console.log($(this).attr('data-check'));
+                $(this).toggleClass('checked', false);
+                $(this).attr('data-check', '1')
+            }
+        })
+    })
 </script>

@@ -8,14 +8,20 @@
             <div class="form-inputs">
                 <div class="form-group email required user_email">
                     <label class="control-label email required" for="user_email">
-                        <div class="icon"><img src="/images/email.jpg" alt=""></div></label><input class="form-control string email required" autofocus="autofocus" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email" placeholder="注册邮箱"></div>
+                        <div class="icon"><img src="/images/email.jpg" alt=""></div>
+                    </label><input class="form-control string email required" autofocus="autofocus" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email" placeholder="注册邮箱"></div>
                 <div class="form-group password required user_password">
                     <label class="control-label password required" for="user_password">
-                        <div class="icon"><img src="/images/password.jpg" alt=""></div></label><input class="form-control password required" required="required" aria-required="true" type="password" name="user[password]" id="user_password" placeholder="设置至少6位的密码">
+                        <div class="icon"><img src="/images/password.jpg" alt=""></div>
+                    </label><input class="form-control password required" required="required" aria-required="true" type="password" name="user[password]" id="user_password" placeholder="设置至少6位的密码">
                 </div>
                 <div class="form-group password required user_password_confirmation">
                     <label class="control-label password required" for="user_password_confirmation">
-                        <div class="icon"><img src="/images/email.jpg" alt=""></div></label><input class="form-control password required" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="确认密码"></div>
+                        <div class="icon"><img src="/images/email.jpg" alt=""></div>
+                    </label><input class="form-control password required" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="确认密码"></div>
+                <%= rucaptcha_image_tag(alt: 'Captcha',class:"pull-left rucaptcha_image_tag") %>
+                <%= rucaptcha_input_tag(class: 'form-control', placeholder: '请输入验证码',class:"pull-right rucaptcha_input_tag") %>
+
             </div>
             <div class="form-actions">
                 <input type="submit" name="commit" value="Sign up" class="btn btn-signUp" data-disable-with="Sign up">
@@ -39,13 +45,13 @@
 
 <%#= render "devise/shared/links" %>
 <script type="text/javascript">
-  $(function () {
-    $('input').focus(function () {
-      $(this).parent().addClass('test')
-    })
-    $('input').blur(function () {
-      $(this).parent().removeClass('test')
-    })
+    $(function () {
+        $('input').focus(function () {
+            $(this).parent().addClass('test')
+        })
+        $('input').blur(function () {
+            $(this).parent().removeClass('test')
+        })
 
-  })
+    })
 </script>

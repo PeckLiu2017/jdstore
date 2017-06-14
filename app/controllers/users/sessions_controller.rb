@@ -1,5 +1,15 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  prepend_before_action :valify_captcha!, only: [:create]
+
+  def valify_captcha!
+    unless verify_rucaptcha?
+      redirect_to new_user_session_path, alert: t('rucaptcha.invalid')
+      return
+    end
+    true
+  end
+
 
   # GET /resource/sign_in
   # def new
